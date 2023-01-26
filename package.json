@@ -1,0 +1,19 @@
+{
+  "name": "blog_central_server",
+  "version": "1.0.0",
+  "description": "\"Backend for Blog Central\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manishsharma0398/Blog-Central-Server.git"
+  },
+  "author": "\"Manish Sharma\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manishsharma0398/Blog-Central-Server/issues"
+  },
+  "homepage": "https://github.com/manishsharma0398/Blog-Central-Server#readme"
+}
