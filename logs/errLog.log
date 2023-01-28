@@ -1,1 +1,14 @@
 27-01-2023	16:21:27	758cf575-86e9-4331-bf8f-99e796837248	ReferenceError: isValidMongoId is not defined	GET	/api/user/63d3ac52afff53fefacfd274	undefined
+28-01-2023	20:12:47	d5ab81ea-9c70-4503-b5b2-fd0727af7020	Error: Unauthorized	POST	/api/auth/logout	undefined
+28-01-2023	23:02:10	0e18fda6-fa1f-49ec-ab7b-df28b310c3d5	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:04:39	d4ba5ac4-eb61-439f-8f9c-c16d4772ef60	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:07:18	bcf68597-8fbd-44be-aa9c-30825e197fc3	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:09:45	d012b84c-6cfd-4d9f-9d65-ba3af1e153e0	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:11:08	116879aa-e751-429d-9db7-082f368a122d	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:12:44	9278047c-3941-40dc-8e15-72be0707e576	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:13:18	15b72ed3-6922-4809-87dc-32b8e58aa6bf	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:14:07	2bdb5784-6d76-4bcc-8509-ccc5aab9d692	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:15:26	3f9cc78b-670d-4b03-bcca-4b025891ffe4	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:18:14	78b4ef1b-ad43-4da5-bbbc-21b66f5be37b	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
+28-01-2023	23:39:21	abbd7e66-cb52-4f88-b0a1-e8049a25d1b6	ReferenceError: Profile is not defined	POST	/api/user/register	undefined
+28-01-2023	23:39:57	dd4fbe3d-8f82-4510-ba8a-1955b8702dcb	ValidationError: Profile validation failed: gender: Path `gender` is required.	POST	/api/user/register	undefined

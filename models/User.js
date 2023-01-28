@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
-// Declare the Schema of the Mongo model
-var userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -43,13 +42,15 @@ var userSchema = new mongoose.Schema(
 );
 
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    next();
+  if (this.isModified("password")) {
+    const salt = await bcrypt.genSaltSync(
+      Number(process.env.BCRYPT_SALT_ROUNDS)
+    );
+    const hash = await bcrypt.hashSync(this.password, salt);
+    this.password = hash;
   }
 
-  const salt = await bcrypt.genSaltSync(Number(process.env.BCRYPT_SALT_ROUNDS));
-  const hash = await bcrypt.hashSync(this.password, salt);
-  this.password = hash;
+  next();
 });
 
 userSchema.methods.didPasswordMatch = async function (enteredPassword) {
@@ -66,5 +67,4 @@ userSchema.methods.createPasswordResetToken = async function () {
   return resetToken;
 };
 
-//Export the model
 module.exports = mongoose.model("User", userSchema);

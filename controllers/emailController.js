@@ -1,5 +1,5 @@
-const asyncHandler = require("express-async-handler");
 const nodemailer = require("nodemailer");
+const asyncHandler = require("express-async-handler");
 
 module.exports.sendEmail = asyncHandler(async (data, req, res) => {
   // create reusable transporter object using the default SMTP transport

@@ -1,5 +1,5 @@
-const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
+const asyncHandler = require("express-async-handler");
 
 const User = require("../models/User");
 
@@ -17,8 +17,10 @@ module.exports.verifyToken = asyncHandler(async (req, res, next) => {
     if (err) return res.status(403).json({ message: "Forbidden" });
     // check token of user
     const user = await User.findById(decoded.id).select("_id").lean().exec();
+
+    if (!user) throw new Error("Some error occured");
     req.userId = user._id.toString();
-    req.roles = user.role;
+    req.role = user.role;
     next();
   });
 });

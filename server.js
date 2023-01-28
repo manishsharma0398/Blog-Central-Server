@@ -5,11 +5,11 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const { connectToDB } = require("./config/dbConnect");
+const { logEvents } = require("./middlewares/logger");
 const { errorHandler } = require("./middlewares/errorHandler");
 
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
-const { logEvents } = require("./middlewares/logger");
 
 require("dotenv").config();
 connectToDB();

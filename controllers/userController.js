@@ -1,25 +1,22 @@
 const asyncHandler = require("express-async-handler");
 
 const User = require("../models/User");
+
 const { sendEmail } = require("./emailController");
 const { logEvents } = require("../middlewares/logger");
-// const { isValidMongoId } = require("../utils/validMongoId");
-
+const { isValidUserId } = require("../utils/checkId");
 const {
   USER_BLOCKED_LOG_FILE,
   USER_UNBLOCKED_LOG_FILE,
 } = require("../utils/variables");
 
+// register
 module.exports.register = asyncHandler(async (req, res) => {
-  const {
-    name,
-    email,
-    mobile,
-    password,
-    confirmPassword: password2,
-  } = req.body;
+  const { name, email, password, confirmPassword: password2 } = req.body;
 
-  if (!name || !email || !mobile || !password || !password2)
+  // ?validate all fields
+
+  if (!name || !email || !password || !password2)
     return res.status(400).json({ message: "All fields required" });
 
   if (password !== password2)
@@ -34,9 +31,12 @@ module.exports.register = asyncHandler(async (req, res) => {
 
   await User.create(userdata);
 
-  //   const htm = `Hi, Please follow this link to reset your password. This link is valid till 10 minutes.<a href="http://localhost:${process.env.PORT}/api/user/reset-password/${token}">Click Here</a>`;
+  // ?Generate verify account token
 
-  const htm = `Congratulations! ${name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process`;
+  const htm = `Congratulations! ${name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:
+  <br/>
+  <a href="http://localhost:${process.env.PORT}/api/user/verify-account/token">Verify Account</a>
+  `;
 
   const data = {
     to: email,
@@ -49,79 +49,136 @@ module.exports.register = asyncHandler(async (req, res) => {
   return res.status(201).json({ message: "User created" });
 });
 
-// Route only accessible to admin
+// get all users - @admin
 module.exports.getAllUsers = asyncHandler(async (req, res) => {
   try {
     const allUsers = await User.find()
-      .select("-password -updatedAt -__v")
-      .lean();
+      .select("_id name email role blocked verified createdAt")
+      .lean()
+      .exec();
     return res.json(allUsers);
   } catch (error) {
     throw new Error(error);
   }
 });
 
+// get a user
 module.exports.getUser = asyncHandler(async (req, res) => {
-  const userId = req.params.userId;
-  //   isValidMongoId(userId);
+  const userId = req.params?.userId;
+  isValidUserId(userId);
 
   try {
     const user = await User.findById(userId)
-      .select("-password -updatedAt -__v")
-      .lean();
+      .select("_id name email role blocked verified createdAt")
+      .lean()
+      .exec();
+
     if (!user) return res.status(404).json({ message: "No user found" });
+
+    if (user.blocked)
+      return res.status(200).json({ message: "Cannot fetch user details" });
+
     return res.json(user);
   } catch (error) {
     throw new Error("Invalid User Id");
   }
 });
 
+// update user
 module.exports.updateUser = asyncHandler(async (req, res) => {
-  const userId = req.userId;
-  //   isValidMongoId(userId);
+  const userId = req?.params?.userId;
+  isValidUserId(userId);
 
-  const updatedUserData = {
+  // ? validate req.body
+
+  const userSentData = {
     name: req.body?.name,
     email: req.body?.email,
-    mobile: req.body?.mobile,
+    password: req.body?.password,
   };
 
-  if (
-    !updatedUserData.firstname ||
-    !updatedUserData.email ||
-    !updatedUserData.mobile
-  )
-    return res.status(400).json({ message: "Required" });
+  const user = await User.findById(userId).exec();
+  if (!user) return res.status(400).json({ message: "User not found" });
+
+  if (req.userId !== user._id.toString())
+    return res.status(403).json({ message: "Unauthorized" });
+
+  if (userSentData.name.length < 5)
+    return res.status(400).json({ message: "Enter Valid Name" });
+
+  if (user.email !== userSentData.email) {
+    const emailExist = await User.findOne({ email: userSentData.email }).exec();
+    if (emailExist)
+      return res
+        .status(400)
+        .json({ message: "Email registered with another account" });
+  }
+
+  if (!userSentData?.password)
+    return res.status(400).json({ message: "Enter valid Password" });
+
+  const passwordMatched = await user.didPasswordMatch(userSentData.password);
+
+  if (!passwordMatched)
+    return res.status(401).json({ message: "Password did not match" });
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(userId, updatedUserData, {
-      new: true,
+    user.name = userSentData.name;
+    user.email = userSentData.email;
+
+    const updatedUser = await user.save();
+
+    const emailChanged = userSentData.email === updatedUser.email;
+
+    if (emailChanged) {
+      const htm = `Congratulations! ${
+        updatedUser.name?.split(" ")[0]
+      }, your Blog Central account registered email has been successfully changed. 
+  `;
+
+      const data = {
+        to: updatedUser.email,
+        subject: "Email account changed",
+        htm,
+        text: "Registered email account for your account",
+      };
+
+      await sendEmail(data);
+    }
+
+    return res.status(201).json({
+      name: updatedUser.name,
+      email: updatedUser.email,
     });
-
-    if (!updatedUser) return res.status(404).json({ message: "No user found" });
-
-    return res.json(updatedUser);
   } catch (error) {
     throw new Error(error);
   }
 });
 
+// delete user
 module.exports.deleteUser = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
-  isValidMongoId(userId);
+  isValidUserId(userId);
 
   try {
-    const user = await User.findByIdAndDelete(userId);
+    const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: "No user found" });
+
+    // ?only user himself can delete his account
+    if (req.userId !== user._id.toString())
+      return res.status(403).json({ message: "Unauthorized" });
+
+    await user.delete();
     return res.json({ message: "User deleted" });
   } catch (error) {
-    throw new Error("Invalid User Id");
+    throw new Error(error);
   }
 });
 
+// block user
 module.exports.blockUser = asyncHandler(async (req, res) => {
   const userToBlock = req.params?.userId;
-  isValidMongoId(userToBlock);
+  isValidUserId(userToBlock);
 
   try {
     const user = await User.findByIdAndUpdate(
@@ -138,9 +195,10 @@ module.exports.blockUser = asyncHandler(async (req, res) => {
   }
 });
 
+// unblock user
 module.exports.unBlockUser = asyncHandler(async (req, res) => {
   const userId = req.params?.userId;
-  isValidMongoId(userId);
+  isValidUserId(userId);
 
   try {
     const user = await User.findByIdAndUpdate(

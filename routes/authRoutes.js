@@ -8,14 +8,16 @@ const {
   updatePassword,
   forgotPassword,
   resetPassword,
+  verifyAccount,
 } = require("../controllers/authController");
-// const { verifyToken } = require("../middlewares/authMiddleware");
+const { verifyToken } = require("../middlewares/verifyJWT");
 
 router.post("/login", login);
-// router.post("/logout", logout);
+router.post("/logout", verifyToken, logout);
 // router.post("/refresh", handleRefreshToken);
-// router.put("/password/update", verifyToken, updatePassword);
-// router.post("/password/forgot", forgotPassword);
-// router.post("/password/reset/:token", resetPassword);
+// router.put("/verify-account", verifyToken, verifyAccount);
+router.put("/password-update", verifyToken, updatePassword);
+router.post("/password-forgot", forgotPassword);
+router.post("/password-reset/:token", resetPassword);
 
 module.exports = router;

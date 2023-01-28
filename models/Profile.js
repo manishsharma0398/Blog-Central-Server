@@ -15,7 +15,6 @@ const profileSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      required: true,
       lowercase: true,
     },
     profilePic: {

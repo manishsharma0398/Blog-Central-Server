@@ -2,18 +2,22 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const asyncHandler = require("express-async-handler");
 
-const { logEvents } = require("../middlewares/logger");
 const User = require("../models/User");
-const { generateToken } = require("../config/jwtToken");
-const { COOKIE_NAME, PWD_LOG_FILE } = require("../utils/variables");
-const { generateRefreshToken } = require("../config/refreshToken");
-// const { isValidMongoId } = require("../utils/validMongoId");
-// const { isEmailValid } = require("../utils/emailValidator");
-const { sendEmail } = require("./emailController");
+const Profile = require("../models/Profile");
 
+const { logEvents } = require("../middlewares/logger");
+const { sendEmail } = require("./emailController");
+const { generateToken } = require("../config/jwtToken");
+const { generateRefreshToken } = require("../config/refreshToken");
+const { COOKIE_NAME, PWD_LOG_FILE } = require("../utils/variables");
+const { isEmailValid } = require("../utils/emailValidator");
+const { isValidUserId } = require("../utils/checkId");
+
+// login
 module.exports.login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
+  // ? validation check
   if (!email || !password)
     return res.status(400).json({ message: "All fields required" });
 
@@ -29,35 +33,43 @@ module.exports.login = asyncHandler(async (req, res) => {
 
   const refreshToken = generateRefreshToken(user._id);
 
-  const updatedUser = await User.findByIdAndUpdate(
-    user._id,
-    { refreshToken },
-    { new: true }
-  );
+  user.refreshToken = refreshToken;
+
+  await user.save();
 
   res.cookie(COOKIE_NAME, refreshToken, {
     httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 3,
+    maxAge: 1000 * 60 * 60 * 24 * 3, // 3days
   });
 
+  const userProfile = await Profile.findOne({ user: user._id }).populate(
+    "user"
+  );
+
   return res.status(200).json({
-    _id: updatedUser?._id,
-    name: updatedUser?.name,
-    email: updatedUser?.email,
-    mobile: updatedUser?.mobile,
-    token: generateToken(updatedUser._id),
+    user: {
+      id: user?._id,
+      name: user?.name,
+      email: user?.email,
+      role: user?.role,
+      verified: user?.verified,
+    },
+    profile: userProfile,
+    token: generateToken(user._id),
   });
 });
+
+module.exports.verifyAccount = asyncHandler(async (req, res) => {});
 
 module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
 
-  if (!cookies?.jwt) {
+  if (!cookies[COOKIE_NAME]) {
     res.statusCode = 401;
     throw new Error("Unauthorized");
   }
 
-  const refreshToken = cookies.jwt;
+  const refreshToken = cookies[COOKIE_NAME];
 
   jwt.verify(
     refreshToken,
@@ -85,45 +97,59 @@ module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
   );
 });
 
+// logout
 module.exports.logout = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.sendStatus(204); //No content
-  const refreshToken = cookies.jwt;
+  if (!cookies[COOKIE_NAME]) return res.sendStatus(204); //No content
+
+  // ? check userId with token id
+
+  const refreshToken = cookies[COOKIE_NAME];
   try {
-    await User.findOneAndUpdate(
-      refreshToken,
-      { refreshToken: "" },
-      { new: true }
-    );
+    const user = await User.findOne({ refreshToken }).exec();
+    user.refreshToken = "";
+    await user.save();
   } catch (error) {
-    throw new Error(error);
+    throw new Error("Could not logout. Please try again later.");
   }
-  res.clearCookie("jwt", { httpOnly: true, secure: true });
+  res.cookie(COOKIE_NAME, "");
+  res.clearCookie(COOKIE_NAME, { httpOnly: true, secure: true });
   return res.json({ message: "Log Out" });
 });
 
+// update or change password
 module.exports.updatePassword = asyncHandler(async (req, res) => {
-  const userId = req.userId;
-  isValidMongoId(userId);
+  const userId = req?.userId;
+  isValidUserId(userId);
 
-  const newPassword = req.body?.password;
+  // ?validate passwords
 
-  if (!newPassword || newPassword.length < 1 || newPassword === null)
-    return res.status(400).json({ message: "Password required" });
+  const oldPassword = req?.body?.oldPassword;
+  const newPassword = req?.body?.newPassword;
+  const confirmNewPassword = req?.body?.confirmNewPassword;
 
+  // confirm password
   const user = await User.findById(userId).exec();
-
   if (!user) throw new Error("User Do Not Exist!");
+
+  const passwordMatched = user.didPasswordMatch(oldPassword);
+
+  if (!passwordMatched)
+    return res.status(403).json({ message: "Password incorrect" });
+
+  if (newPassword !== confirmNewPassword)
+    return res.status(400).json({ message: "Password did not match" });
 
   try {
     user.password = newPassword;
-    const updatedPass = await user.save();
-    return res.json(updatedPass);
+    await user.save();
+    return res.json({ message: "Password changed successfully" });
   } catch (err) {
     throw new Error(err);
   }
 });
 
+// forgot password
 module.exports.forgotPassword = asyncHandler(async (req, res) => {
   const email = req.body?.email;
 
@@ -131,7 +157,10 @@ module.exports.forgotPassword = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Invalid Email Id" });
 
   const user = await User.findOne({ email }).exec();
-  if (!user) return res.status(404).json({ message: "User Not Found" });
+  if (!user)
+    return res
+      .status(404)
+      .json({ message: "Email not registered with any account" });
 
   const token = await user.createPasswordResetToken();
   await user.save();
@@ -140,15 +169,19 @@ module.exports.forgotPassword = asyncHandler(async (req, res) => {
 
   const data = {
     to: email,
-    subject: "Forgot Password Link",
+    subject: "Password Reset Link",
+    text: "Reset your password by clicking on the link provided in the email.",
     htm: resetURL,
-    text: "Hey, User",
   };
 
   await sendEmail(data);
-  return res.status(200).json(token);
+  // ? tokens
+  return res.status(201).json({
+    message: "A password reset email has been sent to your registered email.",
+  });
 });
 
+// reset password
 module.exports.resetPassword = asyncHandler(async (req, res) => {
   const { password, confirmPassword } = req.body;
 
@@ -159,26 +192,29 @@ module.exports.resetPassword = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Passwords do not match" });
 
   const token = req.params?.token;
-  if (!token) return res.status(400).json({ message: "No token" });
+  if (!token) return res.status(400).json({ message: "Link not valid" });
 
   const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
 
   const user = await User.findOne({ passwordResetToken: hashedToken }).exec();
   if (!user)
-    return res.status(401).json({ message: "Token Expired or Wrong Token" });
+    return res.status(401).json({ message: "Token Expired or Invalid" });
 
   if (Date.now() > user.passwordResetTokenExpires)
-    return res.json({ message: "Token expired. Generate a new token" });
+    return res.json({ message: "Password reset token link expired." });
+
+  // ? check if user doesn't set the same password
 
   user.password = password;
-  // user.passwordChangedAt = Date.now();
   user.passwordResetToken = undefined;
   user.passwordResetTokenExpires = undefined;
 
   try {
     await user.save();
     logEvents(`${user.email}:${user._id}`, PWD_LOG_FILE);
-    return res.json(user);
+    return res.json({
+      message: "Password Successfully Changed. Please log in to continue",
+    });
   } catch (error) {
     throw new Error(error);
   }
