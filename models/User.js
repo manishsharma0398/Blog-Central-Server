@@ -14,11 +14,6 @@ var userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    mobile: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     password: {
       type: String,
       required: true,
@@ -35,6 +30,10 @@ var userSchema = new mongoose.Schema(
     },
     refreshToken: {
       type: String,
+    },
+    verified: {
+      type: Boolean,
+      default: false,
     },
     passwordChangedAt: Date,
     passwordResetToken: String,
