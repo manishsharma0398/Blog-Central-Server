@@ -7,6 +7,10 @@ const cookieParser = require("cookie-parser");
 const { connectToDB } = require("./config/dbConnect");
 const { errorHandler } = require("./middlewares/errorHandler");
 
+const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
+const { logEvents } = require("./middlewares/logger");
+
 require("dotenv").config();
 connectToDB();
 
@@ -20,12 +24,16 @@ app.use(cookieParser());
 app.use(cors());
 app.use(morgan("dev"));
 
+// routes
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
+
+app.use(errorHandler);
+
 mongoose.connection.once("open", () => {
   console.log("Connected to database");
   app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 });
-
-app.use(errorHandler);
 
 mongoose.connection.on("error", (err) => {
   console.log(err);

@@ -15,10 +15,8 @@ module.exports.verifyToken = asyncHandler(async (req, res, next) => {
 
   jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
     if (err) return res.status(403).json({ message: "Forbidden" });
-    const user = await User.findById(decoded.id)
-      .select("-password")
-      .lean()
-      .exec();
+    // check token of user
+    const user = await User.findById(decoded.id).select("_id").lean().exec();
     req.userId = user._id.toString();
     req.roles = user.role;
     next();
