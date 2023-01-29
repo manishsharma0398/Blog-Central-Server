@@ -33,9 +33,11 @@ module.exports.register = asyncHandler(async (req, res) => {
 
   // ?Generate verify account token
 
+  const verifyToken = await user.createVerificationToken();
+
   const htm = `Congratulations! ${name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:
   <br/>
-  <a href="http://localhost:${process.env.PORT}/api/user/verify-account/token">Verify Account</a>
+  <a href="http://localhost:${process.env.PORT}/api/user/verify-account/${verifyToken}">Verify Account</a>
   `;
 
   const data = {

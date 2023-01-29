@@ -9,7 +9,11 @@ const { logEvents } = require("../middlewares/logger");
 const { sendEmail } = require("./emailController");
 const { generateToken } = require("../config/jwtToken");
 const { generateRefreshToken } = require("../config/refreshToken");
-const { COOKIE_NAME, PWD_LOG_FILE } = require("../utils/variables");
+const {
+  COOKIE_NAME,
+  PWD_LOG_FILE,
+  VERIFIED_LOG_FILE,
+} = require("../utils/variables");
 const { isEmailValid } = require("../utils/emailValidator");
 const { isValidUserId } = require("../utils/checkId");
 
@@ -59,8 +63,77 @@ module.exports.login = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports.verifyAccount = asyncHandler(async (req, res) => {});
+// verify account
+module.exports.verifyAccount = asyncHandler(async (req, res) => {
+  const verifyToken = req?.params?.verifyToken;
+  if (!verifyToken) return res.status(400).json({ message: "Invalid URL" });
 
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(verifyToken)
+    .digest("hex");
+
+  const user = await User.findOne({ verificationToken: hashedToken }).exec();
+  if (!user) return res.status(401).json({ message: "Token Invalid" });
+
+  // ? check if token valid
+  if (Date.now() > user.verificationTokenExpires)
+    return res.status(400).json({
+      message: "Verification token link expired. Please generate new",
+    });
+
+  user.verified = true;
+  user.verificationToken = null;
+
+  try {
+    await user.save();
+    logEvents(`${user.email}:${user._id}`, VERIFIED_LOG_FILE);
+    return res.json({
+      message: "Verification Process Continue. Please login to continue",
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+// generate new verification token
+module.exports.generateNewVerificationToken = asyncHandler(async (req, res) => {
+  const userId = req?.params?.userId;
+  isValidUserId(userId);
+
+  const user = await User.findById(userId).exec();
+  if (!user) return res.status(400).json({ message: "User not found" });
+
+  if (req.userId !== userId)
+    return res.status(403).json({ message: "Unauthorized" });
+
+  // ?Generate verify account token
+
+  const verifyToken = await user.createVerificationToken();
+
+  await user.save();
+
+  const htm = `Hey! ${
+    user.name.split(" ")[0]
+  }, <br /> Please click on the following link to complete your verification process:
+  <br/>
+  <a href="http://localhost:${
+    process.env.PORT
+  }/api/user/verify-account/${verifyToken}">Verify Account</a>
+  `;
+
+  const data = {
+    to: email,
+    subject: "Blog Central Account Verification",
+    htm,
+    text: "Please complete verification process",
+  };
+
+  await sendEmail(data);
+  return res.status(201).json({ message: "User created" });
+});
+
+// ? doubt in refresh token check once
 module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
 

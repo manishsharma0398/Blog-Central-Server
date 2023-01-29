@@ -9,13 +9,15 @@ const {
   forgotPassword,
   resetPassword,
   verifyAccount,
+  generateNewVerificationToken,
 } = require("../controllers/authController");
 const { verifyToken } = require("../middlewares/verifyJWT");
 
 router.post("/login", login);
 router.post("/logout", verifyToken, logout);
-// router.post("/refresh", handleRefreshToken);
-// router.put("/verify-account", verifyToken, verifyAccount);
+router.post("/refresh", verifyToken, handleRefreshToken);
+router.post("/refresh", verifyToken, generateNewVerificationToken);
+router.put("/verify-account/:verifyToken", verifyToken, verifyAccount);
 router.put("/password-update", verifyToken, updatePassword);
 router.post("/password-forgot", forgotPassword);
 router.post("/password-reset/:token", resetPassword);
