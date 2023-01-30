@@ -14,7 +14,7 @@ const { uploadPhoto, compressImage } = require("../middlewares/uploadImage");
 const { verifyToken } = require("../middlewares/verifyJWT");
 
 // create new blog
-router.post("/create", verifyToken, createBlog);
+router.post("/", verifyToken, createBlog);
 // upload blog image
 router.post(
   "/image",

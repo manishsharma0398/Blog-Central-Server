@@ -9,7 +9,7 @@ const {
 
 const { verifyToken, isAdmin } = require("../middlewares/verifyJWT");
 
-router.post("/create", verifyToken, isAdmin, addNewCategory);
+router.post("/", verifyToken, isAdmin, addNewCategory);
 router.get("/all", verifyToken, isAdmin, getAllCategories);
 router.delete("/:categoryId", verifyToken, isAdmin, deleteCategory);
 router.patch("/:categoryId", verifyToken, isAdmin, updateCategory);

@@ -22,3 +22,6 @@
 31-01-2023	02:40:56	9a80ff86-c518-41f0-b956-c6161862da34	TypeError: Cannot read properties of undefined (reading 'files')	POST	/api/blog/image	undefined
 31-01-2023	02:43:48	32598b63-5d32-44dc-b3b2-8b1244caa3f7	Error: ReferenceError: imagesFolder is not defined	POST	/api/blog/image	undefined
 31-01-2023	02:45:34	31771606-1b57-402c-889f-a59aa71f9de0	Error: ReferenceError: fs is not defined	POST	/api/blog/image	undefined
+31-01-2023	03:02:20	2830427f-b410-4844-8e47-d05760c8dcb2	Error: Unauthorized. You are not admin	POST	/api/category	undefined
+31-01-2023	03:05:42	821594e1-d5ab-47f1-beb5-3d18ed351a13	Error: Unauthorized	POST	/api/blog	undefined
+31-01-2023	03:06:10	0664f6e0-f1e8-4a30-a827-9f0521fe2ec4	ReferenceError: Category is not defined	POST	/api/blog	undefined

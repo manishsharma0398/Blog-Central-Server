@@ -11,7 +11,7 @@ module.exports.createBlog = asyncHandler(async (req, res) => {
   const category = req?.body?.category;
   const tags = req?.body?.tags;
 
-  const newBlog = await Category.create({
+  const newBlog = await Blog.create({
     user: userId,
     title,
     blog,
@@ -53,7 +53,7 @@ module.exports.getUserBlog = asyncHandler(async (req, res) => {
 // upload
 module.exports.updateBlog = asyncHandler(async (req, res) => {
   const userId = req?.userId;
-  const blogId = req?.params?.title;
+  const blogId = req?.params?.blogId;
   const title = req?.body?.title;
   const blog = req?.body?.blog;
   const img = req?.body?.img;

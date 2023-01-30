@@ -12,6 +12,7 @@ const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 require("dotenv").config();
 connectToDB();
@@ -31,6 +32,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/blog", blogRoutes);
 app.use("/api/category", categoryRoutes);
+app.use("/api/proflie", profileRoutes);
 
 app.use(errorHandler);
 mongoose.connection.once("open", () => {
