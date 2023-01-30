@@ -14,7 +14,7 @@ const authRoutes = require("./routes/authRoutes");
 require("dotenv").config();
 connectToDB();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5001;
 const app = express();
 
 // middlewares
@@ -29,6 +29,8 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 
 app.use(errorHandler);
+
+// app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 
 mongoose.connection.once("open", () => {
   console.log("Connected to database");

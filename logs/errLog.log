@@ -12,3 +12,9 @@
 28-01-2023	23:18:14	78b4ef1b-ad43-4da5-bbbc-21b66f5be37b	MongoServerError: E11000 duplicate key error collection: db.users index: mobile_1 dup key: { mobile: null }	POST	/api/user/register	undefined
 28-01-2023	23:39:21	abbd7e66-cb52-4f88-b0a1-e8049a25d1b6	ReferenceError: Profile is not defined	POST	/api/user/register	undefined
 28-01-2023	23:39:57	dd4fbe3d-8f82-4510-ba8a-1955b8702dcb	ValidationError: Profile validation failed: gender: Path `gender` is required.	POST	/api/user/register	undefined
+29-01-2023	21:28:01	491fd1ed-504e-4950-b140-0357fdf1d3f7	ReferenceError: email is not defined	POST	/api/auth/login	undefined
+29-01-2023	21:30:04	f3cb1e7b-6cf9-473a-a0d6-38181f5ce6b2	ReferenceError: email is not defined	POST	/api/auth/login	undefined
+29-01-2023	21:30:59	0a14590b-c8f4-4536-a412-97f07f12379e	ReferenceError: email is not defined	POST	/api/auth/login	undefined
+29-01-2023	21:32:24	63ad0006-41be-49ba-8def-cebe8b780870	ReferenceError: email is not defined	POST	/api/auth/login	undefined
+29-01-2023	21:34:41	bbf784fa-8950-4130-ac49-80afaaf60bbe	ReferenceError: email is not defined	POST	/api/auth/login	undefined
+29-01-2023	21:35:23	d27ee347-f7d9-49d6-9abd-8e7e509bf6f8	MongooseError: Operation `users.findOne()` buffering timed out after 10000ms	POST	/api/auth/login	undefined

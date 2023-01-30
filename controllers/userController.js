@@ -9,18 +9,14 @@ const {
   USER_BLOCKED_LOG_FILE,
   USER_UNBLOCKED_LOG_FILE,
 } = require("../utils/variables");
+const { isInputValid } = require("../validation/formValidation");
+const { register_validator } = require("../validation/authValidation");
 
 // register
 module.exports.register = asyncHandler(async (req, res) => {
-  const { name, email, password, confirmPassword: password2 } = req.body;
+  if (await isInputValid(req, res, register_validator)) return;
 
-  // ?validate all fields
-
-  if (!name || !email || !password || !password2)
-    return res.status(400).json({ message: "All fields required" });
-
-  if (password !== password2)
-    return res.status(400).json({ message: "Passwords do not match" });
+  const { name, email } = req.body;
 
   const user = await User.findOne({ email }).exec();
 
@@ -32,7 +28,6 @@ module.exports.register = asyncHandler(async (req, res) => {
   await User.create(userdata);
 
   // ?Generate verify account token
-
   const verifyToken = await user.createVerificationToken();
 
   const htm = `Congratulations! ${name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:

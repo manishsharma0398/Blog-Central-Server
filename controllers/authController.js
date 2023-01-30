@@ -16,14 +16,14 @@ const {
 } = require("../utils/variables");
 const { isEmailValid } = require("../utils/emailValidator");
 const { isValidUserId } = require("../utils/checkId");
+const { isInputValid } = require("../validation/formValidation");
+const { login_validator } = require("../validation/authValidation");
 
 // login
 module.exports.login = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  if (await isInputValid(req, res, login_validator)) return;
 
-  // ? validation check
-  if (!email || !password)
-    return res.status(400).json({ message: "All fields required" });
+  const { email, password } = req.body;
 
   const user = await User.findOne({ email }).exec();
 
