@@ -10,6 +10,8 @@ const { errorHandler } = require("./middlewares/errorHandler");
 
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+const blogRoutes = require("./routes/blogRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 
 require("dotenv").config();
 connectToDB();
@@ -27,11 +29,10 @@ app.use(morgan("dev"));
 // routes
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/blog", blogRoutes);
+app.use("/api/category", categoryRoutes);
 
 app.use(errorHandler);
-
-// app.listen(PORT, () => console.log(`Server running on ${PORT}`));
-
 mongoose.connection.once("open", () => {
   console.log("Connected to database");
   app.listen(PORT, () => console.log(`Server running on ${PORT}`));
