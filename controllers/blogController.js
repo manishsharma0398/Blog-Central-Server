@@ -44,10 +44,10 @@ module.exports.getABlog = asyncHandler(async (req, res) => {
 module.exports.getUserBlog = asyncHandler(async (req, res) => {
   const userId = req?.userId;
 
-  const blog = await Blog.find({ user: userId }).exec();
-  if (!blog) return res.status(404).json({ message: "Blog not found" });
+  const blogs = await Blog.find({ user: userId }).exec();
+  if (!blogs) return res.status(404).json({ message: "Blog not found" });
 
-  return res.status(201).json(blog);
+  return res.status(201).json({ blogs });
 });
 
 // upload

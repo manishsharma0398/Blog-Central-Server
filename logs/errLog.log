@@ -25,3 +25,13 @@
 31-01-2023	03:02:20	2830427f-b410-4844-8e47-d05760c8dcb2	Error: Unauthorized. You are not admin	POST	/api/category	undefined
 31-01-2023	03:05:42	821594e1-d5ab-47f1-beb5-3d18ed351a13	Error: Unauthorized	POST	/api/blog	undefined
 31-01-2023	03:06:10	0664f6e0-f1e8-4a30-a827-9f0521fe2ec4	ReferenceError: Category is not defined	POST	/api/blog	undefined
+31-01-2023	06:58:18	772a86a5-0a03-405d-b789-3d8ea33917b7	Error: Unauthorized	POST	/api/blog/	http://localhost:5173
+03-02-2023	01:45:06	da50f822-a75c-4491-ac26-7746dfae0675	ValidationError: Category validation failed: category: Path `category` is required.	PATCH	/api/category/63d837b6553582f779ddecea	http://localhost:5173
+03-02-2023	01:47:13	699c50d2-eae9-48d7-8d4c-9f3603e0c22f	ValidationError: Category validation failed: category: Path `category` is required.	PATCH	/api/category/63d837b6553582f779ddecea	http://localhost:5173
+03-02-2023	01:49:14	c81b4533-c0c1-4683-bbab-aa0e7b00aa54	ValidationError: Category validation failed: category: Path `category` is required.	PATCH	/api/category/63d837b6553582f779ddecea	http://localhost:5173
+03-02-2023	01:50:54	00cc853d-7689-415d-b8c6-0a97a41c130b	ValidationError: Category validation failed: category: Path `category` is required.	PATCH	/api/category/63d837b6553582f779ddecea	http://localhost:5173
+03-02-2023	01:52:11	9356910b-7da2-4bd0-8e01-1cd07dfa0040	ValidationError: Category validation failed: category: Path `category` is required.	PATCH	/api/category/63d837b6553582f779ddecea	http://localhost:5173
+03-02-2023	01:54:16	5feec042-7ca9-4c55-905f-16d74093574d	ValidationError: Category validation failed: category: Path `category` is required.	PATCH	/api/category/63d837b6553582f779ddecea	http://localhost:5173
+03-02-2023	02:37:53	57334346-064f-484d-b397-963eb20f3a5b	CastError: Cast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "Category"	DELETE	/api/category/[object%20Object]	http://localhost:5173
+03-02-2023	02:40:48	e95b994d-0a37-4a97-8838-243e3ff37d81	CastError: Cast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "Category"	DELETE	/api/category/[object%20Object]	http://localhost:5173
+03-02-2023	02:40:51	f8cf8353-13c6-44ec-93e2-063f5dd8a19a	CastError: Cast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "Category"	DELETE	/api/category/[object%20Object]	http://localhost:5173

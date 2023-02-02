@@ -24,10 +24,10 @@ module.exports.addNewCategory = asyncHandler(async (req, res) => {
 module.exports.getAllCategories = asyncHandler(async (req, res) => {
   const allCategories = await Category.find({}).exec();
 
-  return res.status(201).json(allCategories);
+  return res.status(200).json({ categories: allCategories });
 });
 
-// upload
+// update category
 module.exports.updateCategory = asyncHandler(async (req, res) => {
   const userId = req?.userId;
   const updtCategory = req?.body?.category;
@@ -43,7 +43,12 @@ module.exports.updateCategory = asyncHandler(async (req, res) => {
 
   const categoryExist = await Category.find({ category: updtCategory }).exec();
 
-  if (categoryExist)
+  console.log(categoryExist);
+
+  if (
+    categoryExist.length > 0 &&
+    categoryExist.every((cat) => cat.id !== categoryId)
+  )
     return res.status(400).json({ message: "Category already exist" });
 
   category.category = updtCategory;
