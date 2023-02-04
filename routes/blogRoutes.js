@@ -7,6 +7,7 @@ const {
   deleteBlog,
   createBlog,
   updateBlog,
+  getBlogByUserId,
 } = require("../controllers/blogController");
 const { uploadBlogImage } = require("../controllers/imageController");
 const { uploadPhoto, compressImage } = require("../middlewares/uploadImage");
@@ -25,7 +26,8 @@ router.post(
 );
 // get blogs
 router.get("/all", verifyToken, getAllBlogs);
-router.get("/user/:userId", verifyToken, getUserBlog);
+router.get("/user", verifyToken, getUserBlog);
+router.get("/user/:userId", verifyToken, getBlogByUserId);
 router.get("/:blogId", getABlog);
 // update blog
 router.patch("/:blogId", verifyToken, updateBlog);

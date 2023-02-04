@@ -15,9 +15,15 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    img: {
+    visibility: {
       type: String,
+      required: true,
     },
+    images: [
+      {
+        type: String,
+      },
+    ],
     category: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

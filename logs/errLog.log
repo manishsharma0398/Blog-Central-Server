@@ -35,3 +35,11 @@
 03-02-2023	02:37:53	57334346-064f-484d-b397-963eb20f3a5b	CastError: Cast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "Category"	DELETE	/api/category/[object%20Object]	http://localhost:5173
 03-02-2023	02:40:48	e95b994d-0a37-4a97-8838-243e3ff37d81	CastError: Cast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "Category"	DELETE	/api/category/[object%20Object]	http://localhost:5173
 03-02-2023	02:40:51	f8cf8353-13c6-44ec-93e2-063f5dd8a19a	CastError: Cast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "Category"	DELETE	/api/category/[object%20Object]	http://localhost:5173
+03-02-2023	16:54:33	b69befb4-bbb1-4b97-b5cb-9bd236ee751b	Error: User does not exist	GET	/api/blog/user/asdf	http://localhost:5173
+03-02-2023	16:56:57	02bff498-bb58-4230-9ad1-489bf235b161	Error: User does not exist	GET	/api/blog/user/asdf	http://localhost:5173
+03-02-2023	16:58:57	73183aa0-dcaf-4fd4-9fc1-559c2fc7812a	Error: User does not exist	GET	/api/blog/user/manish	http://localhost:5173
+03-02-2023	19:45:43	cfa05091-fe2d-4bc5-b93b-d51038eb3111	ValidationError: Blog validation failed: visibility: Path `visibility` is required.	POST	/api/blog/	http://localhost:5173
+03-02-2023	19:48:21	ce5b55d3-bc6c-49c0-b515-230d6e39d899	ValidationError: Blog validation failed: images: Cast to string failed for value "[]" (type Array) at path "images"	POST	/api/blog/	http://localhost:5173
+03-02-2023	23:35:22	d9123f3d-495c-4b3c-8a22-0b8da62135c4	TypeError: Cannot read properties of undefined (reading 'toString')	PATCH	/api/blog/63d8387e20c4f30fafbfb4b1	http://localhost:5173
+04-02-2023	01:43:33	3314ff74-3ec3-4e4c-ae38-b0b9e151dda3	CastError: Cast to ObjectId failed for value "52" (type string) at path "_id" for model "Blog"	GET	/api/blog/52	http://localhost:5173
+04-02-2023	01:52:30	cff05db3-19c1-4613-9d11-0665f9c4e554	CastError: Cast to ObjectId failed for value "52" (type string) at path "_id" for model "Blog"	GET	/api/blog/52	http://localhost:5173
