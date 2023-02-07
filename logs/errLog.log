@@ -43,3 +43,27 @@
 03-02-2023	23:35:22	d9123f3d-495c-4b3c-8a22-0b8da62135c4	TypeError: Cannot read properties of undefined (reading 'toString')	PATCH	/api/blog/63d8387e20c4f30fafbfb4b1	http://localhost:5173
 04-02-2023	01:43:33	3314ff74-3ec3-4e4c-ae38-b0b9e151dda3	CastError: Cast to ObjectId failed for value "52" (type string) at path "_id" for model "Blog"	GET	/api/blog/52	http://localhost:5173
 04-02-2023	01:52:30	cff05db3-19c1-4613-9d11-0665f9c4e554	CastError: Cast to ObjectId failed for value "52" (type string) at path "_id" for model "Blog"	GET	/api/blog/52	http://localhost:5173
+04-02-2023	23:09:52	9f9ba076-37cc-4652-8362-cd70fa255b57	ValidationError: Blog validation failed: images.0: Cast to [string] failed for value "[\n' +
+  '  {\n' +
+  "    url: 'https://res.cloudinary.com/dc5d5vwis/image/upload/v1675531322/blog-central/blogs/ao7rywmasazt8u0eumar.jpg',\n" +
+  "    asset_id: '97b4cd942024a7e3878e99c40beafae0',\n" +
+  "    public_id: 'blog-central/blogs/ao7rywmasazt8u0eumar'\n" +
+  '  }\n' +
+  ']" (type string) at path "images.0" because of "CastError"	POST	/api/blog/	http://localhost:5173
+06-02-2023	03:16:36	5af9f151-3744-4c97-91dc-e35c9cd61210	Error: ReferenceError: deleted is not defined	POST	/api/image	http://localhost:5173
+06-02-2023	03:16:36	c224097a-561f-457b-a78a-47f4d0e53ecf	Error: ReferenceError: deleted is not defined	POST	/api/image	http://localhost:5173
+06-02-2023	03:28:59	a6409e3d-e39a-48bd-b098-a0419d9520cb	Error: ReferenceError: deleted is not defined	POST	/api/image	http://localhost:5173
+06-02-2023	03:34:26	cc982b1e-3050-4fe6-bdde-c0613c22dc67	Error: ReferenceError: deleted is not defined	POST	/api/image	http://localhost:5173
+06-02-2023	03:34:26	5a8dcfd9-5821-4d26-9717-46e818c73c0d	Error: ReferenceError: deleted is not defined	POST	/api/image	http://localhost:5173
+06-02-2023	03:40:07	2159a4b0-d374-407f-b1c6-f024bcbad9ae	Error: ReferenceError: deleted is not defined	POST	/api/image	http://localhost:5173
+06-02-2023	03:40:07	5e82be24-1771-4b7b-bbaf-c1ef092548b8	Error: ReferenceError: deleted is not defined	POST	/api/image	http://localhost:5173
+06-02-2023	03:57:34	5fb57123-6486-46e6-a450-e67b3848fe30	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1675636053490-9.057045638654711e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+07-02-2023	00:42:43	76c5a8be-5469-4eba-a75f-57932e1bdfde	ValidationError: Blog validation failed: placeholderImg: Path `placeholderImg` is required.	POST	/api/blog/	http://localhost:5173
+07-02-2023	00:44:01	d531e20a-050c-4f44-b798-0109f9da629a	ValidationError: Blog validation failed: placeholderImg: Placeholder image is required	POST	/api/blog/	http://localhost:5173
+07-02-2023	02:06:04	a9caf865-ee0c-492b-a74a-bdf87ee11e6a	Error: [object Object]	PATCH	/api/blog/63e150716f9d01732c230dd2	http://localhost:5173
+07-02-2023	02:07:48	978884a6-5e1c-4257-bcc5-f4c81155be1a	Error: [object Object]	PATCH	/api/blog/63e150716f9d01732c230dd2	http://localhost:5173
+07-02-2023	15:21:07	4b3fdd62-3777-4d0d-b8f9-a8b7fbeee768	TypeError: blog.contains is not a function	PATCH	/api/blog/63e21e6adbe2ccebaf9506e8	http://localhost:5173
+07-02-2023	15:51:30	b74024ea-b5fd-4065-af72-4c5b0c620fae	ValidationError: Blog validation failed: placeholderImg: Cast to Object failed for value "https://res.cloudinary.com/dc5d5vwis/image/upload/v1675764963/blog-central/blogs/v1bdzbp4bs4locfzwokg.jpg" (type string) at path "placeholderImg"	PATCH	/api/blog/63e224e455733fe2f25472b9	http://localhost:5173
+07-02-2023	20:14:06	1250c1ef-b3b3-47c1-ab2b-9023e0a30070	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
+07-02-2023	20:14:06	622eaa4c-36d5-4008-b49c-c3c4ccba7ca7	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
+07-02-2023	20:14:06	5f51c682-6e23-4680-87dd-e5833a28764f	Error: Error: [object Object]	POST	/api/image	http://localhost:5173

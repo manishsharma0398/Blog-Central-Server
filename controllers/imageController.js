@@ -1,56 +1,47 @@
-const asyncHandler = require("express-async-handler");
 const fs = require("fs");
+const asyncHandler = require("express-async-handler");
 
 const {
-  blogImageCloudinary,
-  profilePicCloudinary,
+  cloudinaryUploadImg,
+  cloudinaryDeleteImg,
 } = require("../config/cloudinary");
 
-// upload blog image
-module.exports.uploadBlogImage = asyncHandler(async (req, res) => {
-  const urls = [];
-  const files = req.files;
+module.exports.uploadImages = asyncHandler(async (req, res) => {
+  const folder_name = req.url.split("/")[1];
 
   try {
+    const urls = [];
+    const files = req.files;
+
     for (const file of files) {
       const originalImage = file.path;
       const compressedImage = file.path.replace(
         "\\public\\images",
         "\\public\\images\\compressed"
       );
-      const newPath = await blogImageCloudinary(compressedImage, "images");
-
+      const newPath = await cloudinaryUploadImg(compressedImage, folder_name);
       urls.push(newPath);
       fs.unlinkSync(originalImage);
       fs.unlinkSync(compressedImage);
     }
 
-    return res.status(200).json(urls);
+    const images = urls.map((file) => {
+      return file;
+    });
+    res.json(images);
   } catch (error) {
     throw new Error(error);
   }
 });
 
-// upload blog image
-module.exports.uploadProfilePic = asyncHandler(async (req, res) => {
-  const urls = [];
-  const files = req.files;
-
+module.exports.deleteImages = asyncHandler(async (req, res) => {
+  const { public_id } = req.body;
   try {
-    for (const file of files) {
-      const originalImage = file.path;
-      const compressedImage = file.path.replace(
-        "\\public\\images",
-        "\\public\\images\\compressed"
-      );
-      const newPath = await profilePicCloudinary(compressedImage, "images");
+    const response = await cloudinaryDeleteImg(public_id, "images");
 
-      urls.push(newPath);
-      fs.unlinkSync(originalImage);
-      fs.unlinkSync(compressedImage);
-    }
+    if (response === "ok") return res.status(204).json();
 
-    return res.status(200).json(urls);
+    return res.json({ message: "Cannot delete images" });
   } catch (error) {
     throw new Error(error);
   }

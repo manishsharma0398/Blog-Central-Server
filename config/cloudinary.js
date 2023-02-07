@@ -1,3 +1,5 @@
+const asyncHandler = require("express-async-handler");
+
 require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
 
@@ -8,29 +10,28 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Upload
-module.exports.blogImageCloudinary = async (fileToUpload) => {
-  console.log("here");
+// upload Image
+module.exports.cloudinaryUploadImg = async (fileToUploads, folder_name) => {
   try {
-    const res = await cloudinary.uploader.upload(fileToUpload, {
-      folder: "blog-central/blog",
+    const response = await cloudinary.uploader.upload(fileToUploads, {
+      folder: `blog-central/${folder_name}`,
     });
-    console.log(res.secure_url);
-    return res.secure_url;
+    return {
+      url: response.secure_url,
+      asset_id: response.asset_id,
+      public_id: response.public_id,
+    };
   } catch (error) {
     throw new Error(error);
   }
 };
 
-// Upload
-module.exports.profilePicCloudinary = async (fileToUpload) => {
+// Delete
+module.exports.cloudinaryDeleteImg = asyncHandler(async (public_id) => {
   try {
-    const res = await cloudinary.uploader.upload(fileToUpload, {
-      folder: "blog-central/profile",
-    });
-    // console.log(res);
-    return res.secure_url;
+    const response = await cloudinary.uploader.destroy(public_id);
+    return response.result;
   } catch (error) {
     throw new Error(error);
   }
-};
+});

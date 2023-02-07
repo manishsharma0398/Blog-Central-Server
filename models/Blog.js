@@ -19,9 +19,16 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    placeholderImg: {
+      url: { type: String },
+      asset_id: { type: String },
+      public_id: { type: String },
+    },
     images: [
       {
-        type: String,
+        url: { type: String },
+        asset_id: { type: String },
+        public_id: { type: String },
       },
     ],
     category: {
