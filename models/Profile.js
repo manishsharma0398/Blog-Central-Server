@@ -10,15 +10,13 @@ const profileSchema = new mongoose.Schema(
     mobile: {
       type: Number,
       min: 10,
-      max: 9999999999,
-      length: 10,
+      max: 10,
+      required: true,
     },
     gender: {
       type: String,
       lowercase: true,
-    },
-    profilePic: {
-      type: String,
+      required: true,
     },
     dateOfBirth: {
       type: Date,
@@ -38,7 +36,20 @@ const profileSchema = new mongoose.Schema(
     zipCode: {
       type: String,
     },
-    socialMediaLinks: [{ url: String }],
+    socialProfiles: [
+      {
+        twitter: String,
+      },
+      {
+        facebook: String,
+      },
+      {
+        linkedin: String,
+      },
+      {
+        instagram: String,
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema(
       default: "user",
       required: true,
     },
+    profilePic: {
+      type: String,
+    },
     blocked: {
       type: Boolean,
       default: false,
