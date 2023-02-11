@@ -46,20 +46,19 @@ module.exports.login = asyncHandler(async (req, res) => {
     maxAge: 1000 * 60 * 60 * 24 * 3, // 3days
   });
 
-  const userProfile = await Profile.findOne({ user: user._id }).populate(
-    "user"
-  );
+  const userProfile = await Profile.findOne({ user: user._id });
 
   return res.status(200).json({
     user: {
-      id: user?._id,
+      _id: user?._id,
       name: user?.name,
       email: user?.email,
       role: user?.role,
       verified: user?.verified,
+      profilePic: user?.profilePic,
     },
-    profile: userProfile,
     token: generateToken(user._id),
+    profile: userProfile,
   });
 });
 
@@ -173,6 +172,9 @@ module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
 // logout
 module.exports.logout = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
+  console.log(cookies);
+  console.log(cookies[COOKIE_NAME]);
+  console.log(cookies.jwt);
   if (!cookies[COOKIE_NAME]) return res.sendStatus(204); //No content
 
   // ? check userId with token id

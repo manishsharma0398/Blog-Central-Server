@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const fs = require("fs");
 
 const User = require("../models/User");
 
@@ -11,6 +12,10 @@ const {
 } = require("../utils/variables");
 const { isInputValid } = require("../validation/formValidation");
 const { register_validator } = require("../validation/authValidation");
+const {
+  cloudinaryUploadImg,
+  cloudinaryDeleteImg,
+} = require("../config/cloudinary");
 
 // register
 module.exports.register = asyncHandler(async (req, res) => {
@@ -210,4 +215,68 @@ module.exports.unBlockUser = asyncHandler(async (req, res) => {
   } catch (error) {
     throw new Error(error);
   }
+});
+
+// update profile picture
+module.exports.updateProfilePicture = asyncHandler(async (req, res) => {
+  const userId = req?.params?.userId;
+
+  if (userId !== req?.userId)
+    return res.status(401).json({ message: "Not allowed" });
+
+  const user = await User.findById(userId)
+    .select("_id name email role verified profilePic")
+    .exec();
+
+  if (!user) return res.status(404).json({ message: "user not found" });
+
+  let profilePic = "";
+
+  try {
+    const file = req.file;
+    const originalImage = file.path;
+    const compressedImage = originalImage.replace(
+      "\\public\\images",
+      "\\public\\images\\compressed"
+    );
+    const newPath = await cloudinaryUploadImg(compressedImage, "profile");
+    profilePic = newPath;
+    fs.unlinkSync(originalImage);
+    fs.unlinkSync(compressedImage);
+
+    if (user?.profilePic?.public_id) {
+      await cloudinaryDeleteImg(user?.profilePic?.public_id);
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+
+  user.profilePic = profilePic;
+  await user.save();
+
+  return res.status(200).json(user);
+});
+
+module.exports.deleteProfilePicture = asyncHandler(async (req, res) => {
+  const userId = req?.params?.userId;
+
+  if (userId !== req?.userId)
+    return res.status(401).json({ message: "Not allowed" });
+
+  const user = await User.findById(userId)
+    .select("_id name email role verified profilePic")
+    .exec();
+
+  if (!user) return res.status(404).json({ message: "user not found" });
+
+  try {
+    await cloudinaryDeleteImg(user?.profilePic?.public_id);
+  } catch (err) {
+    throw new Error(err);
+  }
+
+  user.profilePic = {};
+  await user.save();
+
+  return res.status(200).json(user);
 });

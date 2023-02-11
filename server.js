@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const corsOptions = require("./config/corsOption");
 
 const { connectToDB } = require("./config/dbConnect");
 const { logEvents } = require("./middlewares/logger");
@@ -25,7 +26,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 
 // routes
@@ -33,7 +34,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/blog", blogRoutes);
 app.use("/api/category", categoryRoutes);
-app.use("/api/proflie", profileRoutes);
+app.use("/api/profile", profileRoutes);
 app.use("/api/image", imageRoutes);
 
 app.use(errorHandler);

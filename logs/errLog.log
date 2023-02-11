@@ -67,3 +67,97 @@
 07-02-2023	20:14:06	1250c1ef-b3b3-47c1-ab2b-9023e0a30070	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
 07-02-2023	20:14:06	622eaa4c-36d5-4008-b49c-c3c4ccba7ca7	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
 07-02-2023	20:14:06	5f51c682-6e23-4680-87dd-e5833a28764f	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
+08-02-2023	11:28:30	0f2c3674-8c45-4ce9-a46f-b9815a4d3bbd	ValidationError: Profile validation failed: stateOrRegion: Path `stateOrRegion` is required., mobile: Path `mobile` is required., gender: Path `gender` is required., dateOfBirth: Path `dateOfBirth` is required., country: Path `country` is required., city: Path `city` is required., zipCode: Path `zipCode` is required.	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:29:48	c9a35eec-b520-4b27-bb83-e9dd60941efd	ValidationError: Profile validation failed: stateOrRegion: Path `stateOrRegion` is required., mobile: Path `mobile` is required., gender: Path `gender` is required., dateOfBirth: Path `dateOfBirth` is required., country: Path `country` is required., city: Path `city` is required., zipCode: Path `zipCode` is required.	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:31:06	f0fdb81f-469a-4f1c-b972-c9307371df12	ValidationError: Profile validation failed: stateOrRegion: Path `stateOrRegion` is required., mobile: Path `mobile` (7031035570) is more than maximum allowed value (10).	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:32:47	ea92b8ed-3731-4ad4-9ba1-20aa880ef856	ValidationError: Profile validation failed: stateOrRegion: Path `stateOrRegion` is required.	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:34:01	c94c5ff6-e8fd-4062-bf6e-e3e8a9397b98	ValidationError: Profile validation failed: stateOrRegion: Path `stateOrRegion` is required.	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:34:59	632d4830-6833-4da6-a82f-302da55e2357	ValidationError: Profile validation failed: stateOrRegion: Path `stateOrRegion` is required.	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:39:28	20b0813b-858a-4fff-8acc-f60a22339bde	TypeError: profile.save(...).select is not a function	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:53:44	c4a2cfb5-e4ac-46c7-94d7-605bf72335f9	ValidationError: Profile validation failed: zipCode: Path `zipCode` is required., city: Path `city` is required., stateOrRegion: Path `stateOrRegion` is required., country: Path `country` is required., dateOfBirth: Path `dateOfBirth` is required., gender: Path `gender` is required., mobile: Path `mobile` is required.	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:55:38	1e1f118a-d19d-4a12-b9ce-b8a86e601add	TypeError: Profile.create(...).select is not a function	PATCH	/api/profile	http://localhost:5173
+08-02-2023	11:58:35	23129a6e-363a-4094-8bed-9c5ffc2aab35	TypeError: Profile.create(...).select is not a function	PATCH	/api/profile	http://localhost:5173
+08-02-2023	12:06:30	75ddd119-ec04-4239-88fa-1ae01022e0b4	ReferenceError: Cannot access 'data' before initialization	PATCH	/api/profile	http://localhost:5173
+08-02-2023	12:19:57	0a481666-aef5-414d-9d6f-76acabc896f3	ValidationError: Profile validation failed: socialProfiles: Cast to embedded failed for value "fbfbfbfb" (type string) at path "socialProfiles" because of "ObjectParameterError"	PATCH	/api/profile	http://localhost:5173
+08-02-2023	12:22:25	0f9495f1-f1ec-4509-a2cf-3f1dabf892b5	ValidationError: Profile validation failed: socialProfiles: Cast to embedded failed for value "fbfbfbfb" (type string) at path "socialProfiles" because of "ObjectParameterError"	PATCH	/api/profile	http://localhost:5173
+09-02-2023	10:05:58	8903b27e-617b-41bb-ad2d-8471c0d1d5ec	Error: User does not exist	POST	/api/user/profile-pic/	http://localhost:5173
+09-02-2023	10:07:42	b16f0ddd-7cf5-4726-9a52-30264dd81555	Error: ReferenceError: cloudinaryUploadImg is not defined	POST	/api/user/profile-pic/	http://localhost:5173
+09-02-2023	10:08:25	03eb3f96-88e6-441d-8efe-85e3686b89b7	Error: ReferenceError: fs is not defined	POST	/api/user/profile-pic/	http://localhost:5173
+09-02-2023	11:58:00	1ce66393-3032-4993-a177-44abb23d59fe	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	11:58:48	bb33bf2b-a8bf-454e-a9e4-8f34c9642765	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	12:12:19	bdbf3feb-048a-4bab-bdf0-6f9012c0487d	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	12:16:04	7db0f542-fffe-4d4a-beba-e16c61f35b3e	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	12:26:31	65afc1a5-9014-4d13-bdf8-695822428f61	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	12:29:01	67343080-b977-4bf0-96f9-6d55a3ea758d	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	12:37:50	7b357785-fbd2-4369-b67c-5a894731b980	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	12:40:04	67cc67b8-67eb-4ec2-b274-6efbd4e02a3d	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	15:20:44	3192c386-5408-4293-871b-49da36c72da9	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:14:29	565a57ec-2fe3-4284-8c74-2c2e41efbd1a	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:18:28	ee30c56d-d3c5-40ac-be68-160bb371c368	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:20:13	9711cbab-2ee6-4e8f-8842-b63f3a7716af	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:22:22	b7141f0b-857e-4b59-9bd2-2d95d1266c64	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:23:19	f5eefa10-505d-49cb-926e-4eaee1f3b852	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:31:02	7a607126-071e-4b3e-b08c-04f9794f501a	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:32:06	a686e026-9b97-4dec-8a78-692ec06eacba	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:33:16	34e254d0-db96-4ce3-9063-eab94ed85f53	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	22:33:49	10c64a7e-4cc7-4b63-b0bc-9da22c86fff9	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	23:13:23	96be6d16-9f03-4558-afc7-3efc62c96787	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+09-02-2023	23:16:03	82e8da93-84c8-4b9f-9c7d-14cee4d0977b	Error: Unauthorized	POST	/api/blog/	http://localhost:5173
+09-02-2023	23:18:21	96ceb8cf-f0b1-43d3-9291-391e65adc39a	Error: Unauthorized	POST	/api/blog/	http://localhost:5173
+10-02-2023	23:09:16	a7f76656-021a-45b8-96e2-6c24345d3ab4	Error: Unauthorized	POST	/api/blog/	http://localhost:5173
+11-02-2023	00:15:13	8f4ce165-ca16-411c-8f66-c23e548a6dfa	MongoServerError: Cannot do exclusion on field updatedAt in inclusion projection	DELETE	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	00:20:05	12be3397-2885-4d86-9f4f-6015e86fd518	Error: Error: [object Object]	DELETE	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	00:23:07	3978387a-745c-4cd2-9d11-39f26dcbf15a	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+11-02-2023	00:24:33	9ae27335-ae7e-40df-b293-c05c214984d1	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+11-02-2023	00:25:03	657e3776-e54c-473d-8458-d949bc75ae5b	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+11-02-2023	00:28:13	fb045767-0b7c-4f46-b6c9-38a2eee05a94	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+11-02-2023	00:31:12	571d350c-f301-458e-a506-f2a25b50b940	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+11-02-2023	00:35:48	bb7b77d7-6ef4-4829-972d-763e5443eb3a	Error: Unauthorized	POST	/api/auth/logout	http://localhost:5173
+11-02-2023	01:52:04	f26614c4-dc52-4959-bbca-6e78f577e7d2	MongoServerError: Cannot do exclusion on field updatedAt in inclusion projection	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	01:54:28	973f3a9c-2b3e-4579-8e21-8df8a477fc52	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:28:38	493abd66-cb92-49bd-b460-f8ac5fd5ac9c	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:28:43	e06670e8-ec83-492e-96bc-88a351f28d98	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:29:41	732b59d8-bc1b-4727-a4d4-065f33d33e6d	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:31:06	2f787275-a35a-45b4-96e9-662723976a18	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:31:19	a9c2fcf5-000e-44d4-8431-f3b7ca1a7c46	Error: Error: [object Object]	DELETE	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	02:31:46	7e1ad30c-c8d0-4a70-bc1d-cc96bb71222d	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:32:02	64050d4e-33ec-49f9-862d-0943b817fee3	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:33:19	69c57e13-5676-45ea-a446-6b5e00510ca2	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:35:28	5c9dcd3f-8d88-457c-b407-1539de4b21a3	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	02:37:21	69975696-af62-4f65-a58c-478adcfeddba	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	18:26:04	d282161a-e292-42f4-8d21-9e4144c76f1a	Error: TypeError: files is not iterable	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:29:06	923a85b1-391c-4598-a294-d1d74b019e8c	Error: Error: [object Object]	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:33:10	f7d30c46-5903-434e-82da-e226868d78d6	Error: ReferenceError: file is not defined	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:37:27	2ddb2018-a0ea-4513-ab69-430831f7231a	Error: Error: [object Object]	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:39:19	3abe232f-8c08-4359-bfb4-8cbaa97edc2e	Error: Error: [object Object]	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:41:28	e7e58bbc-6d7d-416c-9d8c-c6e40d30eb92	Error: Error: [object Object]	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:42:46	d4c21380-ef3d-4df0-aba0-60334cd25d20	Error: Error: [object Object]	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:48:47	4ef14e57-5378-4bb3-92f8-800941230910	Error: Error: [object Object]	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	18:49:26	8efafc8a-6ca5-477d-9a57-aabbb4b6c2ee	Error: Error: [object Object]	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	19:01:43	093b296b-9d50-4a44-9b38-cabd589c3060	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676122303136-8.547392151232031e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	19:02:59	d91d7bb3-552e-4e15-b3ab-3f42a41faa97	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676122379402-8.728070557172423e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	19:03:26	4e9e6372-2621-4075-ba54-563db78a833c	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676122406474-8.508638631544212e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	19:05:02	7fa5faf8-f05d-485a-a11b-73ae105bcd16	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676122502647-1.3565212775066526e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	19:05:41	74c66779-f5a2-474e-b3bf-085780fc3fea	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676122541571-4.9216293017589076e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:19:04	ece51470-9e7a-487b-8098-5e28c5e9fb4a	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676126944895-6.210163179078685e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:21:18	fb135128-5c44-47e0-9729-da89256cb802	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676127078988-2.947264419454767e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:21:56	6e464be4-3e68-4b6f-9964-27a49e0d0475	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676127116177-8.004953760904237e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:22:41	36883917-cb21-4396-8784-8f08f74cdc8e	Error: TypeError: Cannot read properties of undefined (reading 'path')	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:22:56	10fc7f42-ae48-4de3-a62e-d20fcebe40f5	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676127176047-2.51036737420959e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:23:30	22d2ced5-d6a8-4c85-a7dd-d2f716eb2c23	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676127210620-8.929633609388265e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:33:35	3532adc6-7e28-476f-9dd5-24fdc06fa1ae	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676127815350-6.632057152264654e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:34:31	00aa3727-bcf2-41ea-a241-d666f2dcac83	Error: TypeError: Cannot read properties of undefined (reading 'path')	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:35:12	969ceeac-6d73-4b3f-8f72-e712e8dfa72e	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676127912013-5.634218198455301e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:39:31	b6daa9a9-5041-4603-a840-483dd307d5e6	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676128171967-4.787550477734643e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	20:40:33	5a0ebbb6-c96e-4fb9-aeee-d80e55ea654e	Error: ENOENT: no such file or directory, open 'E:\projects\Blog Central\server\public\images\images-1676128233278-4.093795430357334e+23.jpeg'	POST	/api/user/profile-pic/63d5601eee08fed107085c12	http://localhost:5173
+11-02-2023	22:53:48	5938da37-2bce-4489-8b90-6d38b4dcab3b	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	22:54:10	280b9f9b-ccce-4710-b924-dcd5294ad195	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+11-02-2023	23:36:29	c8d6b774-31ba-4993-93d1-9cc128534190	Error: Error: [object Object]	POST	/api/image/blogs	http://localhost:5173
+11-02-2023	23:36:29	87147c11-5c3e-490c-8815-313e4633417c	TypeError: Cannot read properties of undefined (reading 'public_id')	PATCH	/api/blog/63e26477bd4a194ea321cd31	http://localhost:5173
+11-02-2023	23:41:03	b507ec54-7db0-431c-8d3d-66f31fd955b2	Error: TypeError: files is not iterable	POST	/api/image/blogs	http://localhost:5173
+11-02-2023	23:41:03	d4511ca3-428c-4d9b-807c-4fcd30b1153a	TypeError: Cannot read properties of undefined (reading 'public_id')	PATCH	/api/blog/63e26477bd4a194ea321cd31	http://localhost:5173
+11-02-2023	23:42:07	328caef1-f39d-4a4e-b993-1e2ac1679754	Error: TypeError: files is not iterable	POST	/api/image/blogs	http://localhost:5173
+11-02-2023	23:42:08	a5152810-770b-4056-a95b-2c81d3ab6b4b	TypeError: Cannot read properties of undefined (reading 'public_id')	PATCH	/api/blog/63e26477bd4a194ea321cd31	http://localhost:5173
+11-02-2023	23:56:39	ab4182a5-fa69-45b3-a4df-3213ed477154	TypeError: Cannot read properties of undefined (reading 'public_id')	PATCH	/api/blog/63e26477bd4a194ea321cd31	http://localhost:5173
+11-02-2023	23:59:59	696e5c13-374f-45a1-b37d-b324db98a3bc	TypeError: Cannot read properties of undefined (reading 'public_id')	PATCH	/api/blog/63e26477bd4a194ea321cd31	http://localhost:5173
+12-02-2023	00:07:10	8ad51f48-7f11-44b7-aef3-fd1bf51d5ebc	Error: TypeError: Cannot read properties of undefined (reading 'path')	POST	/api/image/blogs	http://localhost:5173

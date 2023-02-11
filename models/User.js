@@ -24,7 +24,9 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     profilePic: {
-      type: String,
+      url: { type: String },
+      asset_id: { type: String },
+      public_id: { type: String },
     },
     blocked: {
       type: Boolean,

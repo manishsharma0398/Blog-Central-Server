@@ -11,12 +11,14 @@ module.exports.getAllProfiles = asyncHandler(async (req, res) => {
 
 // get a profile
 module.exports.getProfile = asyncHandler(async (req, res) => {
-  const profileId = req?.params?.profileId;
+  const userId = req?.params?.userId;
 
-  const profile = await Profile.findById(profileId).exec();
+  const profile = await Profile.findOne({ user: userId })
+    .populate("user", "profilePic")
+    .exec();
   if (!profile) return res.status(404).json({ message: "Profile not found" });
 
-  return res.status(201).json(profile);
+  return res.status(200).json(profile);
 });
 
 // upload
@@ -27,27 +29,37 @@ module.exports.updateProfile = asyncHandler(async (req, res) => {
   const profilePic = req?.body?.profilePic;
   const dateOfBirth = req?.body?.dateOfBirth;
   const country = req?.body?.country;
-  const state = req?.body?.state;
+  const stateOrRegion = req?.body?.stateOrRegion;
   const city = req?.body?.city;
   const zipCode = req?.body?.zipCode;
-  const socialMediaLinks = req?.body?.socialMediaLinks;
+  const twitter = req?.body?.twitter;
+  const facebook = req?.body?.facebook;
+  const linkedin = req?.body?.linkedin;
+  const instagram = req?.body?.instagram;
 
-  const profile = await Profile.findOne({ user: userId }).exec();
+  const socialProfiles = { twitter, facebook, linkedin, instagram };
+
+  const data = {
+    mobile,
+    gender,
+    profilePic,
+    dateOfBirth,
+    country,
+    stateOrRegion,
+    city,
+    zipCode,
+    socialProfiles,
+  };
+
+  const profile = await Profile.findOne({ user: userId })
+    .select("-__v -createdAt -updatedAt")
+    .exec();
 
   if (!profile) {
     const newProfile = await Profile.create({
       user: userId,
-      mobile,
-      gender,
-      profilePic,
-      dateOfBirth,
-      country,
-      state,
-      city,
-      zipCode,
-      socialMediaLinks,
+      ...data,
     });
-
     return res.status(201).json(newProfile);
   }
 
@@ -59,12 +71,12 @@ module.exports.updateProfile = asyncHandler(async (req, res) => {
   profile.profilePic = profilePic;
   profile.dateOfBirth = dateOfBirth;
   profile.country = country;
-  profile.state = state;
+  profile.stateOrRegion = stateOrRegion;
   profile.city = city;
   profile.zipCode = zipCode;
-  profile.socialMediaLinks = socialMediaLinks;
+  profile.socialProfiles = socialProfiles;
 
-  const profileUpdt = await profile.save();
+  await profile.save();
 
-  return res.status(201).json(profileUpdt);
+  return res.status(201).json(profile);
 });

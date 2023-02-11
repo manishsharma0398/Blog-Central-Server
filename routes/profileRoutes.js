@@ -8,7 +8,7 @@ const {
 const { verifyToken, isAdmin } = require("../middlewares/verifyJWT");
 
 router.get("/all", verifyToken, isAdmin, getAllProfiles);
-router.get("/:profileId", getProfile);
+router.get("/:userId", getProfile);
 router.patch("/", verifyToken, updateProfile);
 
 module.exports = router;

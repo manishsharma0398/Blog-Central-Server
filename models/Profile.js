@@ -9,47 +9,39 @@ const profileSchema = new mongoose.Schema(
     },
     mobile: {
       type: Number,
-      min: 10,
-      max: 10,
+      length: 10,
       required: true,
     },
     gender: {
       type: String,
-      lowercase: true,
       required: true,
     },
     dateOfBirth: {
       type: Date,
+      required: true,
     },
     country: {
       type: String,
-      lowercase: true,
+      required: true,
     },
-    state: {
+    stateOrRegion: {
       type: String,
-      lowercase: true,
+      required: true,
     },
     city: {
       type: String,
-      lowercase: true,
+      required: true,
     },
     zipCode: {
-      type: String,
+      type: Number,
+      required: true,
     },
-    socialProfiles: [
-      {
-        twitter: String,
-      },
-      {
-        facebook: String,
-      },
-      {
-        linkedin: String,
-      },
-      {
-        instagram: String,
-      },
-    ],
+    socialProfiles: {
+      twitter: String,
+      facebook: String,
+      linkedin: String,
+      instagram: String,
+    },
   },
   { timestamps: true }
 );

@@ -12,6 +12,7 @@ module.exports.createBlog = asyncHandler(async (req, res) => {
   const tags = req?.body?.tags;
   const title = req?.body?.title;
   const category = req?.body?.category;
+  const description = req?.body?.description;
   const visibility = req?.body?.visibility;
   const placeholderImg = req?.body?.placeholderImg;
   const images = req?.body?.images;
@@ -25,6 +26,7 @@ module.exports.createBlog = asyncHandler(async (req, res) => {
     visibility,
     user: userId,
     placeholderImg,
+    description,
   });
 
   return res.status(201).json(newBlog);
@@ -49,7 +51,7 @@ module.exports.getABlog = asyncHandler(async (req, res) => {
 
   const blog = await Blog.findById(blogId)
     .populate([
-      { path: "user", model: "User", select: "_id name" },
+      { path: "user", model: "User", select: "_id name profilePic" },
       { path: "category", select: "_id category" },
     ])
     .exec();
@@ -93,6 +95,7 @@ module.exports.updateBlog = asyncHandler(async (req, res) => {
   const blogId = req?.params?.blogId;
   const category = req?.body?.category;
   const visibility = req?.body?.visibility;
+  const description = req?.body?.description;
   const placeholderImg = req?.body?.placeholderImg;
 
   const blogExist = await Blog.findById(blogId).exec();
@@ -126,12 +129,13 @@ module.exports.updateBlog = asyncHandler(async (req, res) => {
     blogExist.images.push(imgs);
   });
 
-  blogExist.title = title;
-  blogExist.blog = blog;
-  blogExist.visibility = visibility;
-  blogExist.placeholderImg = placeholderImg;
-  blogExist.category = category;
   blogExist.tags = tags;
+  blogExist.blog = blog;
+  blogExist.title = title;
+  blogExist.category = category;
+  blogExist.visibility = visibility;
+  blogExist.description = description;
+  blogExist.placeholderImg = placeholderImg;
 
   const updtBlog = await blogExist.save();
 

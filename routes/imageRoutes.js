@@ -11,7 +11,7 @@ const { uploadPhoto, compressImage } = require("../middlewares/uploadImage");
 router.post(
   "/blogs",
   verifyToken,
-  uploadPhoto.array("images", 1),
+  uploadPhoto.single("images"),
   compressImage,
   uploadImages
 );
