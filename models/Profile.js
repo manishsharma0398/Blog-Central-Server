@@ -11,10 +11,12 @@ const profileSchema = new mongoose.Schema(
       type: Number,
       length: 10,
       required: true,
+      default: "",
     },
     gender: {
       type: String,
       required: true,
+      default: "",
     },
     dateOfBirth: {
       type: Date,
@@ -23,18 +25,22 @@ const profileSchema = new mongoose.Schema(
     country: {
       type: String,
       required: true,
+      default: "",
     },
     stateOrRegion: {
       type: String,
       required: true,
+      default: "",
     },
     city: {
       type: String,
       required: true,
+      default: "",
     },
     zipCode: {
       type: Number,
       required: true,
+      default: "",
     },
     socialProfiles: {
       twitter: String,

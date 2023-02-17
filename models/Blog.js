@@ -40,6 +40,11 @@ const blogSchema = new mongoose.Schema(
       required: true,
       ref: "Category",
     },
+    views: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
     tags: [
       {
         type: String,

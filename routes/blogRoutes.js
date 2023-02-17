@@ -1,13 +1,12 @@
 const router = require("express").Router();
 
 const {
-  getAllBlogs,
-  getUserBlog,
   getABlog,
+  likeBlog,
   deleteBlog,
   createBlog,
   updateBlog,
-  getBlogByUserId,
+  getAllBlogs,
 } = require("../controllers/blogController");
 
 const { verifyToken } = require("../middlewares/verifyJWT");
@@ -16,13 +15,14 @@ const { verifyToken } = require("../middlewares/verifyJWT");
 router.post("/", verifyToken, createBlog);
 
 // get blogs
+// router.get("/all", getAllBlogs);
 router.get("/all", verifyToken, getAllBlogs);
-router.get("/user", verifyToken, getUserBlog);
-router.get("/user/:userId", verifyToken, getBlogByUserId);
 router.get("/:blogId", getABlog);
 // update blog
 router.patch("/:blogId", verifyToken, updateBlog);
 // delete blog
 router.delete("/:blogId", verifyToken, deleteBlog);
+// like blog
+router.post("/like/:blogId", verifyToken, likeBlog);
 
 module.exports = router;

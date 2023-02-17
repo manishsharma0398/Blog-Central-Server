@@ -10,13 +10,13 @@ const {
   unBlockUser,
   updateProfilePicture,
   deleteProfilePicture,
+  getDashboard,
 } = require("../controllers/userController");
 const { uploadPhoto, compressImage } = require("../middlewares/uploadImage");
 
 const { verifyToken, isAdmin } = require("../middlewares/verifyJWT");
 
 router.post("/register", register);
-router.get("/:userId", getUser);
 router.delete("/:userId", verifyToken, deleteUser);
 router.patch("/:userId", verifyToken, updateUser);
 
@@ -31,8 +31,11 @@ router.post(
 );
 
 // only admin routes
-router.get("/all", verifyToken, isAdmin, getAllUsers);
+router.get("/all", verifyToken, getAllUsers);
+router.get("/dashboard", verifyToken, isAdmin, getDashboard);
 router.patch("/block/:userId", verifyToken, isAdmin, blockUser);
 router.patch("/unblock/:userId", verifyToken, isAdmin, unBlockUser);
+
+router.get("/:userId", getUser);
 
 module.exports = router;

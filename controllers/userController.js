@@ -2,6 +2,9 @@ const asyncHandler = require("express-async-handler");
 const fs = require("fs");
 
 const User = require("../models/User");
+const Like = require("../models/Like");
+const Blog = require("../models/Blog");
+const Profile = require("../models/Profile");
 
 const { sendEmail } = require("./emailController");
 const { logEvents } = require("../middlewares/logger");
@@ -16,10 +19,11 @@ const {
   cloudinaryUploadImg,
   cloudinaryDeleteImg,
 } = require("../config/cloudinary");
+const Category = require("../models/Category");
 
 // register
 module.exports.register = asyncHandler(async (req, res) => {
-  if (await isInputValid(req, res, register_validator)) return;
+  // if (await isInputValid(req, res, register_validator)) return;
 
   const { name, email } = req.body;
 
@@ -34,6 +38,8 @@ module.exports.register = asyncHandler(async (req, res) => {
 
   // ?Generate verify account token
   const verifyToken = await user.createVerificationToken();
+
+  console.log(verifyToken);
 
   const htm = `Congratulations! ${name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:
   <br/>
@@ -53,8 +59,9 @@ module.exports.register = asyncHandler(async (req, res) => {
 
 // get all users - @admin
 module.exports.getAllUsers = asyncHandler(async (req, res) => {
+  console.log("yaa");
   try {
-    const allUsers = await User.find()
+    const allUsers = await User.find({})
       .select("_id name email role blocked verified createdAt")
       .lean()
       .exec();
@@ -170,6 +177,10 @@ module.exports.deleteUser = asyncHandler(async (req, res) => {
     if (req.userId !== user._id.toString())
       return res.status(403).json({ message: "Unauthorized" });
 
+    await Like.deleteMany({ user: userId }).exec();
+    await Blog.deleteMany({ user: userId }).exec();
+    await Profile.findOneAndRemove({ user: userId }).exec();
+
     await user.delete();
     return res.json({ message: "User deleted" });
   } catch (error) {
@@ -279,4 +290,39 @@ module.exports.deleteProfilePicture = asyncHandler(async (req, res) => {
   await user.save();
 
   return res.status(200).json(user);
+});
+
+module.exports.getDashboard = asyncHandler(async (req, res) => {
+  const totalUsers = await User.countDocuments({ role: "user" });
+  const blockedUsers = await User.countDocuments({
+    role: "user",
+    blocked: true,
+  });
+  const activeUsers = await User.countDocuments({
+    role: "user",
+    blocked: false,
+  });
+
+  const categories = await Category.find();
+
+  const blogCounts = await Blog.aggregate([
+    { $group: { _id: "$category", count: { $sum: 1 } } },
+  ]);
+
+  const response = {
+    totalUsers,
+    blockedUsers,
+    activeUsers,
+    totalBlogs: blogCounts.reduce((acc, val) => acc + val.count, 0),
+    blogCounts: blogCounts.reduce((acc, val) => {
+      acc[val._id] = val.count;
+      return acc;
+    }, {}),
+    categories: categories.reduce((acc, val) => {
+      acc[val.category] = val._id;
+      return acc;
+    }, {}),
+  };
+
+  return res.status(200).json(response);
 });

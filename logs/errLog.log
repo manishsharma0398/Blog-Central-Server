@@ -161,3 +161,147 @@
 11-02-2023	23:56:39	ab4182a5-fa69-45b3-a4df-3213ed477154	TypeError: Cannot read properties of undefined (reading 'public_id')	PATCH	/api/blog/63e26477bd4a194ea321cd31	http://localhost:5173
 11-02-2023	23:59:59	696e5c13-374f-45a1-b37d-b324db98a3bc	TypeError: Cannot read properties of undefined (reading 'public_id')	PATCH	/api/blog/63e26477bd4a194ea321cd31	http://localhost:5173
 12-02-2023	00:07:10	8ad51f48-7f11-44b7-aef3-fd1bf51d5ebc	Error: TypeError: Cannot read properties of undefined (reading 'path')	POST	/api/image/blogs	http://localhost:5173
+13-02-2023	02:12:40	c973c8fe-078a-49a1-a6ef-5d7353fe75e1	TypeError: Cannot set properties of null (setting 'user')	POST	/api/blog/like/63e7e79d8656f01a494c78f0	http://localhost:5173
+13-02-2023	02:14:12	3ad987d5-fe1d-4de4-b206-7c56324e2c45	TypeError: Cannot set properties of null (setting 'user')	POST	/api/blog/like/63e7e79d8656f01a494c78f0	http://localhost:5173
+13-02-2023	02:14:44	b88bd127-b7cb-4ab9-bdf3-e3e97e3f5c3d	TypeError: Cannot set properties of null (setting 'user')	POST	/api/blog/like/63e7e79d8656f01a494c78f0	http://localhost:5173
+13-02-2023	22:43:52	fe30fc74-5470-40c0-b932-c70153a1013c	Error: Unauthorized	GET	/api/blog/all	undefined
+14-02-2023	00:44:09	d75f3817-d759-450d-8b7e-6a737baca7f3	TypeError: Cannot read properties of undefined (reading 'jwt')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	00:55:58	ea41e301-6378-474c-9055-f9aa1e533917	ReferenceError: userId is not defined	GET	/api/blog/all	http://localhost:5173
+14-02-2023	02:16:47	eb85f46f-ea40-4fd1-8a4b-27e22e152b77	CastError: Cast to ObjectId failed for value "{ userId: '63d5601eee08fed107085c12' }" (type Object) at path "user" for model "Like"	GET	/api/blog/63e7e79d8656f01a494c78f0?userId=63d5601eee08fed107085c12	http://localhost:5173
+14-02-2023	02:17:52	6ec35310-0edc-4350-bb5b-7924db88197d	CastError: Cast to ObjectId failed for value "{ userId: '63d5601eee08fed107085c12' }" (type Object) at path "user" for model "Like"	GET	/api/blog/63e7e79d8656f01a494c78f0?userId=63d5601eee08fed107085c12	http://localhost:5173
+14-02-2023	11:59:52	d578b55d-08f1-427b-a08f-16afb06b6e27	CastError: Cast to ObjectId failed for value "" (type string) at path "user" for model "Like"	GET	/api/blog/63e7e79d8656f01a494c78f0	undefined
+14-02-2023	12:18:38	1b824463-80c2-488a-99d8-ee4b1b3ad7b5	Error: Unauthorized	GET	/api/blog/all	undefined
+14-02-2023	12:24:29	b6539fda-7c28-4e7d-8feb-78692a9dc4cc	Error: Unauthorized	GET	/api/blog/all	undefined
+14-02-2023	12:36:44	12d6db9a-2481-42d3-84fc-f02c8f825333	TypeError: Cannot read properties of null (reading 'createVerificationToken')	POST	/api/user/register	http://localhost:5173
+14-02-2023	12:42:02	8ffc3f13-1386-4572-8612-33f2d4f256a6	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+14-02-2023	12:52:20	5ab9b0d3-22b5-4d01-901b-7552ffbf3d21	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Profile"	GET	/api/profile/undefined	http://localhost:5173
+14-02-2023	14:32:40	75485835-54e2-44c1-bfe6-dad04d09aa74	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:33:49	0d47b094-7914-4d7e-a87c-34dfd0fdd4aa	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:34:21	cd7feb70-ca3a-4e86-95b5-664ad71bae25	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:35:28	6353fb5b-fe40-4524-989f-fc6a84390af8	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:36:39	35d6b725-e6da-4002-a86c-38a8f07b985f	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:38:20	494391c1-7e74-4b89-8856-775a755ead8a	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:40:39	7e183c59-c0fa-4f80-a6a3-9bdd824cfb68	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:42:30	871849c1-0495-49d1-830f-fb9c09d5af6d	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:45:56	f744a689-bcd1-4378-b9a8-cb269d3c631c	TypeError: blog.toObject is not a function	GET	/api/blog/all	http://localhost:5173
+14-02-2023	14:48:33	e3a7544a-38ca-456c-afa8-0382144a37cf	TypeError: blog.toObject is not a function	GET	/api/blog/all	http://localhost:5173
+14-02-2023	15:11:12	879a3d73-d880-449f-bd34-814c6d2f66d5	TypeError: blog.toObject is not a function	GET	/api/blog/all	http://localhost:5173
+14-02-2023	16:14:48	a99f5817-af27-446d-8ee5-76c26e11713b	TypeError: allBlogs.populate is not a function	GET	/api/blog/all	http://localhost:5173
+14-02-2023	16:35:01	dca704b0-ff1a-4e4f-9ca3-02377b03d302	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:36:45	df150913-ae15-41ca-a91d-43d6bc3a5aea	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:42:07	2adf4121-16c5-4163-bb78-8ef2ca356fd3	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:48:00	b7f1825a-2f44-42f1-b996-a1d4180c4227	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:48:48	ced777c4-3d5e-4b27-94dc-15464414750c	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:49:20	2ed2a005-ec70-4835-9a6d-293ec81dcf74	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:50:10	5efb85ef-8014-4b68-86d4-13549d49e511	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:50:14	cd7e4e5e-ea2f-4a3d-b9c9-3e36d5905bfc	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:51:59	51665cdd-b227-48cb-aaca-24e07efe55f2	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:52:03	d23f539d-77ab-42a9-b839-fa7d76b1c33b	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	16:54:37	0f67018c-fea5-4cf0-be58-df01717aded4	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+14-02-2023	17:44:13	71726aaf-896a-4eae-8671-8ce88d8532aa	MongooseError: Query was already executed: Like.count({
+  user: new ObjectId("63d5601eee08fed107085c12"...	POST	/api/blog/like/63e7e79d8656f01a494c78f0	http://localhost:5173
+14-02-2023	17:46:20	54634035-519f-4adc-99ca-45ff54fd05e0	MongooseError: Query was already executed: Like.countDocuments({
+  user: new ObjectId("63d5601eee08fed1...	POST	/api/blog/like/63eb69c23ca1ea66ebf1967d	http://localhost:5173
+14-02-2023	17:51:29	1412de40-7bd5-496b-946a-a5827edd4575	TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle	POST	/api/blog/like/63eb69c23ca1ea66ebf1967d	http://localhost:5173
+14-02-2023	19:08:42	6ef7bfc3-9534-47b1-a4df-cd4d6b099663	ReferenceError: Cannot access 'likes' before initialization	POST	/api/blog/like/63e7e79d8656f01a494c78f0	http://localhost:5173
+15-02-2023	00:01:06	555d6ba8-0a60-4a52-a076-a565d81df182	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	00:01:11	822c6f88-bc10-4d4e-b1af-7940d57257bf	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	00:01:31	248e9e15-2eb5-45f2-9e5c-e829c57b8fb3	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	00:03:12	f181bec2-e0c8-4faa-8e20-eb394661440d	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	00:03:13	ee4bafb3-c3ff-414d-99cd-d2a2c844c2f5	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	00:03:29	f14b7227-4045-4f02-aa67-1b6a745c38bb	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	18:28:28	5319e486-f2fe-4577-8be8-514105cd4466	Error: Invalid sort() argument, must be array of arrays	GET	/api/blog/all	undefined
+15-02-2023	18:29:14	5f5b5346-17bb-4270-a367-6669890f3c34	CastError: Cast to ObjectId failed for value "{
+  '0': new ObjectId("63dbf5f878ff477b4690f6c0"),
+  '1': new ObjectId("63dbfe5f78ff477b4690f6e5"),
+  '2': new ObjectId("63dc2adc008c98159d52d39f"),
+  '3': new ObjectId("63dc2aee008c98159d52d3a5"),
+  '4': new ObjectId("63dc2b0a008c98159d52d3ab"),
+  '5': new ObjectId("63dc2b3d008c98159d52d3b4")
+}" (type Object) at path "category" for model "Blog"	GET	/api/blog/all	undefined
+15-02-2023	18:30:31	6ebaab3d-f53c-489d-981a-061239e26c16	CastError: Cast to ObjectId failed for value "{
+  '0': '63dbf5f878ff477b4690f6c0',
+  '1': '63dbfe5f78ff477b4690f6e5',
+  '2': '63dc2adc008c98159d52d39f',
+  '3': '63dc2aee008c98159d52d3a5',
+  '4': '63dc2b0a008c98159d52d3ab',
+  '5': '63dc2b3d008c98159d52d3b4'
+}" (type Object) at path "category" for model "Blog"	GET	/api/blog/all	undefined
+15-02-2023	18:31:25	0269dabf-6ea7-45f4-aece-0f1964121b21	CastError: Cast to ObjectId failed for value "{
+  '0': '63dbf5f878ff477b4690f6c0',
+  '1': '63dbfe5f78ff477b4690f6e5',
+  '2': '63dc2adc008c98159d52d39f',
+  '3': '63dc2aee008c98159d52d3a5',
+  '4': '63dc2b0a008c98159d52d3ab',
+  '5': '63dc2b3d008c98159d52d3b4'
+}" (type Object) at path "category" for model "Blog"	GET	/api/blog/all	undefined
+15-02-2023	18:32:21	c75c0853-87e7-4420-aa18-2828d829b10e	CastError: Cast to ObjectId failed for value "{
+  '0': new ObjectId("63dbf5f878ff477b4690f6c0"),
+  '1': new ObjectId("63dbfe5f78ff477b4690f6e5"),
+  '2': new ObjectId("63dc2adc008c98159d52d39f"),
+  '3': new ObjectId("63dc2aee008c98159d52d3a5"),
+  '4': new ObjectId("63dc2b0a008c98159d52d3ab"),
+  '5': new ObjectId("63dc2b3d008c98159d52d3b4")
+}" (type Object) at path "category" for model "Blog"	GET	/api/blog/all	undefined
+15-02-2023	18:32:53	12c10e24-99ee-4e62-a557-5c22c8c6b714	Error: Can't use $options	GET	/api/blog/all	undefined
+15-02-2023	18:33:46	f736c7b7-b91a-4805-adc1-bcb39caf2faa	Error: Can't use $regex	GET	/api/blog/all	undefined
+15-02-2023	18:34:33	949dd5a1-2879-4a5e-9f7b-611553c768c4	Error: Can't use $options	GET	/api/blog/all	undefined
+15-02-2023	18:35:17	954c7be3-0f35-4bd4-ba5a-e888b2056672	Error: Can't use $options	GET	/api/blog/all	undefined
+15-02-2023	18:43:02	ba90aca2-ad5f-4cfa-95d3-bed06a6d1230	Error: Invalid sort() argument, must be array of arrays	GET	/api/blog/all	undefined
+15-02-2023	18:43:21	2e9fd810-9de5-48dc-8bc1-550db0855bc3	Error: Invalid sort() argument, must be array of arrays	GET	/api/blog/all	undefined
+15-02-2023	18:43:49	19108056-44cc-4f52-afe4-4e28e0044421	CastError: Cast to ObjectId failed for value "[
+  new ObjectId("63dbf5f878ff477b4690f6c0"),
+  new ObjectId("63dbfe5f78ff477b4690f6e5"),
+  new ObjectId("63dc2adc008c98159d52d39f"),
+  new ObjectId("63dc2aee008c98159d52d3a5"),
+  new ObjectId("63dc2b0a008c98159d52d3ab"),
+  new ObjectId("63dc2b3d008c98159d52d3b4")
+]" (type Array) at path "category" for model "Blog"	GET	/api/blog/all	undefined
+15-02-2023	18:44:53	bb7f4360-8f6e-4299-9bdc-f8224d4a8105	Error: Can't use $options	GET	/api/blog/all	undefined
+15-02-2023	18:53:14	d07e04f5-6625-4efd-a8c9-14d1a394ab71	CastError: Cast to ObjectId failed for value "" (type string) at path "category" for model "Blog"	GET	/api/blog/all	undefined
+15-02-2023	18:59:42	2fddff67-b495-4df4-a318-1a87fde9292d	Error: Can't use $options	GET	/api/blog/all	undefined
+15-02-2023	19:15:57	39ad8d1c-6ef9-4422-86bf-3d58e56be983	Error: Can't use $options	GET	/api/blog/all/?search=g	undefined
+15-02-2023	19:16:15	f008a20d-be68-4c21-902c-725cf2615006	Error: Can't use $regex	GET	/api/blog/all/?search=g	undefined
+15-02-2023	19:17:28	948e1a8f-5688-48b4-b4ba-cdc8444f7851	Error: Can't use $regex	GET	/api/blog/all/?search=g?userId=	undefined
+15-02-2023	19:17:43	7d75f0f9-b334-4e06-a53b-6af026226768	Error: Can't use $regex	GET	/api/blog/all/?search=g&userId=	undefined
+15-02-2023	19:17:52	0756b5f5-f8f8-4dcf-b971-eed761c9f79b	Error: Can't use $regex	GET	/api/blog/all/?search=g	undefined
+15-02-2023	19:18:00	bc14e3ba-c3a2-45b9-be6f-61091471c65c	Error: Can't use $regex	GET	/api/blog/all/?search=g	undefined
+15-02-2023	19:18:25	9f30289f-e2b0-4fd0-9d40-3eece3401991	Error: Can't use $regex	GET	/api/blog/all/?search=g&categories	undefined
+15-02-2023	19:18:29	c750e227-a44c-44ae-a1cd-2a02d737dd70	Error: Can't use $regex	GET	/api/blog/all/?search=g&categories=	undefined
+15-02-2023	19:20:39	d5f786d6-97d2-4451-96c0-7b8ac9a4b2c9	Error: Can't use $options	GET	/api/blog/all/?search=g	undefined
+15-02-2023	19:21:17	1cc47aac-5ad1-4a24-bf45-a58b4164fb3c	CastError: Cast to ObjectId failed for value "{}" (type Object) at path "user" for model "Blog"	GET	/api/blog/all/?search=g	undefined
+15-02-2023	19:21:38	74a6b96c-fc5a-4801-bab6-32e2851a25a7	CastError: Cast to ObjectId failed for value "*" (type string) at path "user" for model "Blog"	GET	/api/blog/all/?search=g	undefined
+15-02-2023	19:23:05	f1719230-1c76-483c-97ee-63afe7fd6f3c	CastError: Cast to ObjectId failed for value "*" (type string) at path "user" for model "Blog"	GET	/api/blog/all/	undefined
+15-02-2023	19:23:53	db6bb663-60b0-47da-8b97-cd18ff97a75a	Error: Can't use $options	GET	/api/blog/all/	undefined
+15-02-2023	19:39:01	ef859f93-86b5-4322-b925-e53e8463b4d1	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	19:40:38	ef4f07c6-2d08-48e7-949c-76a425f462b0	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+15-02-2023	19:42:16	df2bb0be-264a-4ef9-8510-7d3db1f74ed0	CastError: Cast to ObjectId failed for value "undefined" (type string) at path "user" for model "Blog"	GET	/api/blog/all?userId=undefined	http://localhost:5173
+16-02-2023	23:16:35	53dd1cf5-d9e8-4f60-84ad-f66ecc29f4ab	TypeError: Invalid sort value: { undefined: undefined }	GET	/api/blog/all?userId=undefined&page=undefined&sort=undefined,undefined&categories=&search=	http://localhost:5173
+16-02-2023	23:17:12	da170d51-ccfa-4aad-9c93-6601f06c9a9f	TypeError: Invalid sort value: { undefined: undefined }	GET	/api/blog/all?userId=undefined&page=undefined&sort=undefined,undefined&categories=&search=	http://localhost:5173
+16-02-2023	23:21:37	64524fb7-7e46-4b7f-bd6a-117c1c4c5901	TypeError: Invalid sort value: { undefined: undefined }	GET	/api/blog/all?userId=undefined&page=undefined&sort=undefined,undefined&categories=&search=	http://localhost:5173
+16-02-2023	23:21:58	d6c614aa-da70-4734-b2f6-d68251ff0ea7	TypeError: Invalid sort value: { undefined: undefined }	GET	/api/blog/all?userId=undefined&page=undefined&sort=undefined,undefined&categories=&search=	http://localhost:5173
+16-02-2023	23:22:20	ea534a5d-fb06-4b23-b578-8bebe62c1c8f	TypeError: Invalid sort value: { undefined: undefined }	GET	/api/blog/all?userId=undefined&page=undefined&sort=undefined,undefined&categories=&search=	http://localhost:5173
+16-02-2023	23:22:46	4e53a7f9-8de0-4195-be37-004797c96cd9	TypeError: Invalid sort value: { undefined: undefined }	GET	/api/blog/all?userId=undefined&page=undefined&sort=undefined,undefined&categories=&search=	http://localhost:5173
+16-02-2023	23:24:58	62977953-07bd-4bb3-9afe-f8c046eb80df	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:28:21	d0455d4b-e272-410d-a05c-deeaa7196d36	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:28:55	ecfcfb38-bd22-4762-beac-5c57608888ee	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:32:35	43f01da8-7b28-4ede-8fb1-6dc147482bd3	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:34:11	679efaa3-93f8-4d42-a764-b8f0aac7c6d5	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:37:01	320e284c-c6c7-4042-ba48-fb80ab8f3a3b	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:40:27	8f05f344-bc2d-4466-a8fc-7110adadfdcf	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:42:34	c892b092-c18f-4b4e-b449-e1bac5eae2b1	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:43:05	d91f3e0b-ddbb-44a6-a46f-69826dfd183d	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+16-02-2023	23:44:54	70d9a9dc-16ee-42e0-a43a-8144d6a48680	MongoServerError: FieldPath cannot be constructed with empty string	GET	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=	http://localhost:5173
+17-02-2023	01:38:36	5f154f0d-cf08-48ec-989c-dfe30c0583f0	Error: User does not exist	GET	/api/user/all	http://localhost:5173
+17-02-2023	01:39:11	c18005e8-aed9-4469-b3cb-a8da8d809c8b	Error: User does not exist	GET	/api/user/all	http://localhost:5173
+17-02-2023	01:41:45	e5706e71-44e2-4f04-89a4-99a9e4db16d5	Error: User does not exist	GET	/api/user/all	http://localhost:5173
+17-02-2023	01:42:35	3fdb35a9-3deb-47c5-af77-b8399f9fe426	Error: User does not exist	GET	/api/user/all	http://localhost:5173
+17-02-2023	01:44:33	e6916cd0-37cb-437b-bc74-e0ea27063b75	Error: User does not exist	GET	/api/user/all	http://localhost:5173
+17-02-2023	01:45:51	846a5488-76e9-4de8-b865-7274ffc8d536	Error: User does not exist	GET	/api/user/all	http://localhost:5173
+17-02-2023	01:46:02	338b6c77-afc9-4b67-81e6-6ce69321a0a7	Error: User does not exist	GET	/api/user/all	http://localhost:5173
+17-02-2023	02:26:35	d00f73ba-940c-4a93-815f-48ad8da417f9	TypeError: Blog.aggregate(...).populate is not a function	GET	/api/user/dashboard	http://localhost:5173
+17-02-2023	13:32:44	3c74bc3c-7cf7-4361-8940-bb6cfb56250a	ReferenceError: Category is not defined	GET	/api/user/dashboard	http://localhost:5173

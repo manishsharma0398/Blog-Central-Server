@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 
 const Profile = require("../models/Profile");
+const User = require("../models/User");
 
 // get all profiles
 module.exports.getAllProfiles = asyncHandler(async (req, res) => {
@@ -12,11 +13,16 @@ module.exports.getAllProfiles = asyncHandler(async (req, res) => {
 // get a profile
 module.exports.getProfile = asyncHandler(async (req, res) => {
   const userId = req?.params?.userId;
+  const user = await User.findById(userId);
+  console.log(user);
 
   const profile = await Profile.findOne({ user: userId })
     .populate("user", "profilePic")
     .exec();
-  if (!profile) return res.status(404).json({ message: "Profile not found" });
+  if (!profile && user) return res.status(200).json(profile);
+
+  if (!profile && !user)
+    return res.status(404).json({ message: "Profile not found" });
 
   return res.status(200).json(profile);
 });
