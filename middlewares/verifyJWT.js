@@ -28,6 +28,42 @@ module.exports.verifyToken = asyncHandler(async (req, res, next) => {
   });
 });
 
+module.exports.checkLoggedIn = asyncHandler(async (req, res, next) => {
+  const authHeader = req?.headers?.authorization || req?.headers?.Authorization;
+
+  const token = authHeader.split(" ")[1];
+
+  jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+    if (err) {
+      req.userId = "";
+      req.role = "";
+      return next();
+    }
+
+    // check token of user
+    const user = await User.findById(decoded.id)
+      .select("_id role")
+      .lean()
+      .exec();
+
+    if (!user) {
+      req.userId = "";
+      req.role = "";
+      return next();
+    }
+
+    if (user.role === "admin") {
+      req.role = "admin";
+      req.userId = "";
+      return next();
+    }
+
+    req.userId = user._id.toString();
+    req.role = user.role;
+    next();
+  });
+});
+
 module.exports.isAdmin = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.userId).lean().exec();
 

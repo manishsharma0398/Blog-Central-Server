@@ -62,6 +62,7 @@ module.exports.login = asyncHandler(async (req, res) => {
   });
 });
 
+// TODO: implement in front end
 // verify account
 module.exports.verifyAccount = asyncHandler(async (req, res) => {
   const verifyToken = req?.params?.verifyToken;
@@ -95,6 +96,7 @@ module.exports.verifyAccount = asyncHandler(async (req, res) => {
   }
 });
 
+// TODO: implement in front end
 // generate new verification token
 module.exports.generateNewVerificationToken = asyncHandler(async (req, res) => {
   const userId = req?.params?.userId;
@@ -116,9 +118,9 @@ module.exports.generateNewVerificationToken = asyncHandler(async (req, res) => {
     user.name.split(" ")[0]
   }, <br /> Please click on the following link to complete your verification process:
   <br/>
-  <a href="http://localhost:${
-    process.env.PORT
-  }/api/user/verify-account/${verifyToken}">Verify Account</a>
+<a href="${
+    process.env.FRONT_END_BASE_URL
+  }/verify-account/${verifyToken}">Verify Account</a>
   `;
 
   const data = {
@@ -132,6 +134,7 @@ module.exports.generateNewVerificationToken = asyncHandler(async (req, res) => {
   return res.status(201).json({ message: "User created" });
 });
 
+// TODO: implement it
 // ? doubt in refresh token check once
 module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
@@ -172,9 +175,7 @@ module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
 // logout
 module.exports.logout = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
-  console.log(cookies);
-  console.log(cookies[COOKIE_NAME]);
-  console.log(cookies.jwt);
+
   if (!cookies[COOKIE_NAME]) return res.sendStatus(204); //No content
 
   // ? check userId with token id
@@ -192,6 +193,7 @@ module.exports.logout = asyncHandler(async (req, res) => {
   return res.json({ message: "Log Out" });
 });
 
+// TODO: implement in front end
 // update or change password
 module.exports.updatePassword = asyncHandler(async (req, res) => {
   const userId = req?.userId;
@@ -232,6 +234,7 @@ module.exports.forgotPassword = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Invalid Email Id" });
 
   const user = await User.findOne({ email }).exec();
+
   if (!user)
     return res
       .status(404)
@@ -240,7 +243,7 @@ module.exports.forgotPassword = asyncHandler(async (req, res) => {
   const token = await user.createPasswordResetToken();
   await user.save();
 
-  const resetURL = `Hi, Please follow this link to reset your password. This link is valid till 10 minutes.<a href="http://localhost:${process.env.PORT}/api/user/reset-password/${token}">Click Here</a>`;
+  const resetURL = `Hi, Please follow this link to reset your password. This link is valid till 10 minutes.<a href="${process.env.FRONT_END_BASE_URL}/reset-password/${token}">Click Here</a>`;
 
   const data = {
     to: email,
@@ -252,12 +255,13 @@ module.exports.forgotPassword = asyncHandler(async (req, res) => {
   await sendEmail(data);
   // ? tokens
   return res.status(201).json({
-    message: "A password reset email has been sent to your registered email.",
+    message: `A link has been sent to ${email}.Go to your email and click the link.The Link only valid for 10 minutes`,
   });
 });
 
 // reset password
 module.exports.resetPassword = asyncHandler(async (req, res) => {
+  console.log("i am getting called");
   const { password, confirmPassword } = req.body;
 
   if (!password || !confirmPassword)
@@ -276,16 +280,26 @@ module.exports.resetPassword = asyncHandler(async (req, res) => {
     return res.status(401).json({ message: "Token Expired or Invalid" });
 
   if (Date.now() > user.passwordResetTokenExpires)
-    return res.json({ message: "Password reset token link expired." });
-
-  // ? check if user doesn't set the same password
+    return res
+      .status(400)
+      .json({ message: "Password reset token link expired." });
 
   user.password = password;
   user.passwordResetToken = undefined;
   user.passwordResetTokenExpires = undefined;
 
+  const emailBody = `Hey! ${user.name}, you have successfully changed your Blog Central account password.`;
+
+  const data = {
+    to: email,
+    subject: "Password Changed",
+    text: "Password Changed Successfully",
+    htm: emailBody,
+  };
+
   try {
     await user.save();
+    await sendEmail(data);
     logEvents(`${user.email}:${user._id}`, PWD_LOG_FILE);
     return res.json({
       message: "Password Successfully Changed. Please log in to continue",

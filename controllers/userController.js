@@ -43,7 +43,7 @@ module.exports.register = asyncHandler(async (req, res) => {
 
   const htm = `Congratulations! ${name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:
   <br/>
-  <a href="http://localhost:${process.env.PORT}/api/user/verify-account/${verifyToken}">Verify Account</a>
+  <a href="${process.env.FRONT_END_BASE_URL}/verify-account/${verifyToken}">Verify Account</a>
   `;
 
   const data = {
@@ -164,6 +164,7 @@ module.exports.updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+// TODO: implement in front end
 // delete user
 module.exports.deleteUser = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
@@ -188,6 +189,7 @@ module.exports.deleteUser = asyncHandler(async (req, res) => {
   }
 });
 
+// TODO: implement in front end
 // block user
 module.exports.blockUser = asyncHandler(async (req, res) => {
   const userToBlock = req.params?.userId;
@@ -208,6 +210,7 @@ module.exports.blockUser = asyncHandler(async (req, res) => {
   }
 });
 
+// TODO: implement in front end
 // unblock user
 module.exports.unBlockUser = asyncHandler(async (req, res) => {
   const userId = req.params?.userId;

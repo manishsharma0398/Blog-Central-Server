@@ -6,6 +6,7 @@ const Blog = require("../models/Blog");
 const Like = require("../models/Like");
 const Category = require("../models/Category");
 const { isValidUserId } = require("../utils/checkId");
+const User = require("../models/User");
 
 // create
 module.exports.createBlog = asyncHandler(async (req, res) => {
@@ -37,7 +38,7 @@ module.exports.createBlog = asyncHandler(async (req, res) => {
 // get all blogs
 module.exports.getAllBlogs = asyncHandler(async (req, res) => {
   const userId = req?.query?.userId;
-
+  const email = req?.query?.email;
   const page = parseInt(req.query.page) - 1 || 0;
   const limit = parseInt(req.query.limit) || 20;
   const search = req.query.search || "";
@@ -78,11 +79,18 @@ module.exports.getAllBlogs = asyncHandler(async (req, res) => {
 
   if (mongoose.Types.ObjectId.isValid(userId)) query.user = userId;
 
+  if (email) {
+    const user = await User.findOne({ email: email }).exec();
+    if (user) {
+      query.user = user._id;
+    }
+  }
+
   const allBlogs = await Blog.find(query)
     .sort(sortBy)
     .skip(page * limit)
     .limit(limit)
-    .populate([{ path: "user", select: "name profilePic" }])
+    .populate([{ path: "user", select: "name profilePic email" }])
     .populate([{ path: "category", select: "category" }])
     .exec();
 
@@ -117,7 +125,7 @@ module.exports.getAllBlogs = asyncHandler(async (req, res) => {
     categories: categoryToFilter,
   };
 
-  if (req?.userId && req?.role === "admin") {
+  if (!req.userId || req?.role === "admin") {
     response.blogs = blogWithLikesCount;
     return res.status(200).json(response);
   }
@@ -137,7 +145,7 @@ module.exports.getAllBlogs = asyncHandler(async (req, res) => {
 // get a blog
 module.exports.getABlog = asyncHandler(async (req, res) => {
   const blogId = req?.params?.blogId;
-  const userId = req?.query?.userId;
+  const userId = req?.userId;
 
   // ? validate blog id
   if (!mongoose.Types.ObjectId.isValid(blogId))
@@ -159,8 +167,8 @@ module.exports.getABlog = asyncHandler(async (req, res) => {
     await Like.countDocuments({ blog: blogId })
   );
 
-  if (!userId || userId === null) {
-    return res.status(200).json({ ...blog, likes });
+  if (!userId || userId === null || req?.role === "admin") {
+    return res.status(200).json({ ...blog._doc, likes });
   }
 
   const blogLiked = await Like.findOne({

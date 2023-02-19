@@ -305,3 +305,35 @@
 17-02-2023	01:46:02	338b6c77-afc9-4b67-81e6-6ce69321a0a7	Error: User does not exist	GET	/api/user/all	http://localhost:5173
 17-02-2023	02:26:35	d00f73ba-940c-4a93-815f-48ad8da417f9	TypeError: Blog.aggregate(...).populate is not a function	GET	/api/user/dashboard	http://localhost:5173
 17-02-2023	13:32:44	3c74bc3c-7cf7-4361-8940-bb6cfb56250a	ReferenceError: Category is not defined	GET	/api/user/dashboard	http://localhost:5173
+18-02-2023	16:23:56	243c4a09-5a04-4c07-a049-9a0ae771f4cb	TypeError: Cannot read properties of undefined (reading 'split')	GET	/api/profile/?userId=&email=webdevmanish8&username=	http://localhost:5173
+18-02-2023	16:26:26	c6abf47a-8bd5-490a-a5b8-567494e654f6	CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "User"	GET	/api/profile/?userId=&email=webdevmanish8&username=	http://localhost:5173
+18-02-2023	16:27:24	77a14c54-3e45-4637-8454-fbd112ba54bb	CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "User"	GET	/api/profile/?userId=&email=webdevmanish8&username=	http://localhost:5173
+18-02-2023	16:36:01	f29906e7-8dbc-447a-a6e7-c53a5c8698dd	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=webdevmanish8&username=	http://localhost:5173
+18-02-2023	16:37:22	90e0fdd1-857f-49b1-a537-173f535235f9	TypeError: Assignment to constant variable.	GET	/api/profile/?userId=&email=webdevmanish8@gmail.com&username=	http://localhost:5173
+18-02-2023	16:38:42	1ea77795-c6c9-4fc7-b087-896f3bf3f3df	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=:webdevmanish8@gmail.com&username=	http://localhost:5173
+18-02-2023	16:38:53	99394038-9d12-45db-bf61-ac083808a03b	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=:webdevmanish8@gmail.com&username=	http://localhost:5173
+18-02-2023	16:50:24	88c0c534-d6b2-4564-aa0c-66cc58e3bffd	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=webdevmanish8&username=	http://localhost:5173
+18-02-2023	20:59:01	b88c80fb-3a5f-44ba-9019-44d6762f6aa2	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	20:59:19	2213285a-afa9-4e5e-8076-48e084e909d6	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:00:10	014fe2c7-7a09-44ab-a1b2-c625628465d3	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:10:10	55df25f0-f5f9-41dd-a089-ef7c2ccfbccc	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:12:18	e8c1541e-0f79-4bf7-9a66-c98f810131bd	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:19:42	cda9fde3-547a-4570-a147-035253973d71	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:20:16	5290dfe8-265b-4203-8d28-2d9fc75eaeed	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:20:39	fd8ed289-1348-46f7-b758-6ba0ddd09934	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:20:48	3e8eef71-e404-4b7a-a7d3-9014d55bc759	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:31:08	d355c1a4-caa1-4eda-bad6-7656cea76005	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:35:50	30ee0941-17c2-4bf7-a7fd-a1b7ac434709	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:37:15	2eb8963c-f111-4e89-8c95-022710e926a2	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:38:45	02b85e10-43da-4cf0-98c0-656ce128d355	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:39:20	0aa22168-5aaa-4a9d-ac13-ef93e8421fd0	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:39:34	5a2daf1d-144a-487d-8bef-d1a22e2b419c	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:40:27	079906fb-b10a-477d-88d1-29d9cd123d20	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:44:09	5f77747b-f0f6-47a5-ac9e-b625cbadc170	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:46:06	351751be-ce9c-46dc-869b-069a02b5391e	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:47:53	d07b712f-e708-4e8d-a6f4-3617c8edb6d7	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:50:17	c59cdce8-439f-4e90-ba32-72da6c793342	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:51:30	1df8428d-bfed-4e20-b30c-4956038fadbb	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:52:32	493106f3-882b-443f-938f-5cccdba835a2	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:54:19	ffe8418e-df40-489c-91f9-7120f0a62b8d	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+18-02-2023	21:55:16	7e1d44ec-3a8b-4934-8eb1-2662797a5381	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173

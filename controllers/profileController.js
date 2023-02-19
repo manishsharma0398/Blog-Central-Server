@@ -12,19 +12,38 @@ module.exports.getAllProfiles = asyncHandler(async (req, res) => {
 
 // get a profile
 module.exports.getProfile = asyncHandler(async (req, res) => {
-  const userId = req?.params?.userId;
-  const user = await User.findById(userId);
-  console.log(user);
+  const userId = req?.query?.userId;
+  const email = req?.query?.email;
+  const username = req?.query?.username;
 
-  const profile = await Profile.findOne({ user: userId })
-    .populate("user", "profilePic")
+  let user = "";
+
+  if (email || username) {
+    user = await User.findOne({ email }).exec();
+    console.log(user);
+  } else {
+    user = await User.findById(userId).exec();
+  }
+
+  if (!user) return res.status(500).json({ message: "user not found" });
+
+  const profile = await Profile.findOne({ user: user._id })
+    .populate("user", "profilePic name")
     .exec();
-  if (!profile && user) return res.status(200).json(profile);
 
-  if (!profile && !user)
-    return res.status(404).json({ message: "Profile not found" });
+  const response = {
+    ownProfile: false,
+    profile,
+    name: user?.name,
+    profilePic: user?.profilePic,
+  };
 
-  return res.status(200).json(profile);
+  if (req?.userId === user._id.toString()) {
+    response.ownProfile = true;
+    return res.status(200).json(response);
+  }
+
+  return res.status(200).json(response);
 });
 
 // upload
