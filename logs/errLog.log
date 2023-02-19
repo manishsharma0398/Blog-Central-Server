@@ -337,3 +337,26 @@
 18-02-2023	21:52:32	493106f3-882b-443f-938f-5cccdba835a2	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
 18-02-2023	21:54:19	ffe8418e-df40-489c-91f9-7120f0a62b8d	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
 18-02-2023	21:55:16	7e1d44ec-3a8b-4934-8eb1-2662797a5381	TypeError: Cannot read properties of null (reading '_id')	GET	/api/profile/?userId=&email=undefined&username=	http://localhost:5173
+19-02-2023	17:42:53	e0a6f732-bbe6-409d-af18-4a733c43ecf4	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:4173
+19-02-2023	17:42:53	6382a5f9-4b41-4cd9-bfb6-69b24e7d1bbe	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:4173
+19-02-2023	17:42:53	ab75a1db-db5d-4502-9656-a72e485b3235	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:4173
+19-02-2023	18:00:53	92ddc178-ef73-4a98-84d1-da8ad4dc3b02	Error: Not allowed by CORS	OPTIONS	/api/category/all	https://blog-central-client.vercel.app
+19-02-2023	18:00:53	be77e136-e476-4d13-8600-08894ff2bddf	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client.vercel.app
+19-02-2023	18:00:53	48b68e0a-64d7-4678-bce4-ace39743d154	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client.vercel.app
+19-02-2023	18:01:29	edb89e07-322d-4162-aee7-8b99dc801cbb	Error: Not allowed by CORS	OPTIONS	/api/category/all	https://blog-central-client.vercel.app
+19-02-2023	18:01:29	55178b52-9922-464e-9a3c-b49b8dfe3cd2	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client.vercel.app
+19-02-2023	18:01:29	ed4006c8-83d2-479c-be69-91619b81c7ab	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client.vercel.app
+19-02-2023	18:02:07	eccadc88-f127-435e-87b8-ce62ef006843	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client.vercel.app
+19-02-2023	18:02:07	480794ee-2949-4f57-9b45-a0578482f961	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client.vercel.app
+19-02-2023	18:02:19	fb76b867-c335-4aed-a8c7-45045c3e7741	Error: Not allowed by CORS	OPTIONS	/api/category/all	https://blog-central-client-manishsharma0398.vercel.app
+19-02-2023	18:02:19	9aae45ca-e9fe-4a0c-a118-25ed3e3d0c01	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client-manishsharma0398.vercel.app
+19-02-2023	18:02:19	3425c46f-cafa-477b-b5b5-87416f8a786b	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client-manishsharma0398.vercel.app
+19-02-2023	18:02:21	bcbd1c08-e6a1-481a-878f-69a8ec9bd9ac	Error: Not allowed by CORS	OPTIONS	/api/category/all	https://blog-central-client-git-main-manishsharma0398.vercel.app
+19-02-2023	18:02:21	293ef6e6-da55-4443-bd5b-2f1bbcf2a1a8	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client-git-main-manishsharma0398.vercel.app
+19-02-2023	18:02:21	e3bc495c-a5a5-4c2a-a951-26e10e59f9f0	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client-git-main-manishsharma0398.vercel.app
+19-02-2023	18:04:05	3b2adf2b-fec0-4776-93dc-03806251f56e	Error: Not allowed by CORS	OPTIONS	/api/category/all	https://blog-central-client-3y5041ryb-manishsharma0398.vercel.app
+19-02-2023	18:04:05	d0aa6ef2-e5d5-40ae-82a5-f103dfa42cba	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client-3y5041ryb-manishsharma0398.vercel.app
+19-02-2023	18:04:05	527062d7-63fe-4364-b47c-07ba2ff5f4bd	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client-3y5041ryb-manishsharma0398.vercel.app
+19-02-2023	18:06:51	f4dc46db-13e3-41c9-9d56-c3d8544d69f4	Error: Not allowed by CORS	OPTIONS	/api/category/all	https://blog-central-client.vercel.app
+19-02-2023	18:06:51	451dc997-3592-492d-baf0-a8b69d245a91	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client.vercel.app
+19-02-2023	18:06:51	b7ec9d7e-cb46-4e90-ae32-e78898ae0920	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client.vercel.app
