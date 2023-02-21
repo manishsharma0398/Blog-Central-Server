@@ -360,3 +360,45 @@
 19-02-2023	18:06:51	f4dc46db-13e3-41c9-9d56-c3d8544d69f4	Error: Not allowed by CORS	OPTIONS	/api/category/all	https://blog-central-client.vercel.app
 19-02-2023	18:06:51	451dc997-3592-492d-baf0-a8b69d245a91	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	https://blog-central-client.vercel.app
 19-02-2023	18:06:51	b7ec9d7e-cb46-4e90-ae32-e78898ae0920	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	https://blog-central-client.vercel.app
+20-02-2023	23:15:12	b06aeeea-c931-4719-9af0-91c7d9c54bdf	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:5173
+20-02-2023	23:15:12	85d783d8-c1bd-4994-8c4b-89c67602001c	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:12	0112474b-7a7f-47f3-9c20-cd4add12a9c0	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:13	f5126b8c-67a6-43be-82f1-76dad9c174b7	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:5173
+20-02-2023	23:15:13	8e9cca98-109e-4868-a228-fc4e900f9a51	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:13	93ed99b0-5ee5-4d2b-bbe3-15934c0131e0	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:14	8e705446-a27d-4f0c-b5c3-5929f02f6d4d	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:5173
+20-02-2023	23:15:14	43ff46b4-beaa-4130-b451-f3b369f6b83b	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:14	6b0b0979-2697-4830-acf9-b8fd16bfddef	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:40	c05fc4d6-ef04-485c-a53f-d38d23ffd413	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:5173
+20-02-2023	23:15:40	974558b4-7434-4041-8640-6ba69e6d99dc	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:40	1625b1fc-2724-4f99-a269-f3c5c68218a8	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:40	0a25d0a7-552a-4f01-9a13-c5fe1f2e2f1f	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:5173
+20-02-2023	23:15:40	3a98fea4-ffcd-4723-8b9d-7fddcf4930d8	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:40	a270346b-8d9d-4ee3-bdba-e4622794e6db	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:40	eaeebb11-0d4d-4276-84c6-a9acf176bacd	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:5173
+20-02-2023	23:15:40	c0b47f84-59de-447c-84a0-4c7b365675aa	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:15:40	b36c276d-08f3-4489-964f-97b498e289c9	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:16:03	fc442fe1-bcd6-4f41-b01f-67523ebbbce7	Error: Not allowed by CORS	OPTIONS	/api/category/all	http://localhost:5173
+20-02-2023	23:16:03	83f3322b-5d45-46e3-86b2-6a5cfe128312	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=1&sort=views,asc&categories=&search=&email=	http://localhost:5173
+20-02-2023	23:16:03	00c0cc23-1bb8-465e-9184-544a022f5fe8	Error: Not allowed by CORS	OPTIONS	/api/blog/all?userId=undefined&page=undefined&sort=,&categories=&search=&email=	http://localhost:5173
+21-02-2023	01:40:44	2ad408d6-f908-4652-9ce9-f7b99b047c9f	CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "User"	GET	/api/profile/?userId=&email=&username=	http://localhost:5173
+21-02-2023	01:41:24	3072bef7-5389-4296-9371-6962fae54126	CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "User"	GET	/api/profile/?userId=&email=&username=	http://localhost:5173
+21-02-2023	01:42:49	2b5c4403-2059-4db0-be54-a9fd97b4453b	CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "User"	GET	/api/profile/?userId=&email=&username=	http://localhost:5173
+21-02-2023	01:43:42	fd7715ca-1ebe-45bd-a66c-1bead5746598	CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "User"	GET	/api/profile/?userId=&email=&username=	http://localhost:5173
+21-02-2023	01:44:11	fcbd8cb8-6a63-459d-9a41-5021e173115a	CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "User"	GET	/api/profile/?userId=&email=&username=	http://localhost:5173
+21-02-2023	02:45:30	cbf0bb00-5886-46d5-9b4c-3ff5cde4c5d1	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1676927728640-9.072640957418876e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+21-02-2023	02:45:52	5d47b56c-5fd5-4f44-b749-5c003348833c	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1676927750008-7.015214255391487e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+21-02-2023	02:47:02	dffd5e69-fa54-4477-939b-33e75f465ee5	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
+21-02-2023	02:47:02	c2578123-7fd8-4c14-b62d-5f6825ec4756	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
+21-02-2023	02:58:13	bd43e471-2165-4ed0-bca8-e394b372d0c1	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1676928491130-9.447450952540876e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+21-02-2023	02:59:00	3c4177ec-91ae-48f1-a7fd-b605bbe8da52	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
+21-02-2023	02:59:54	5d17ffa8-112e-488d-9380-cbc07edc1a08	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1676928591460-9.526916760428891e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+21-02-2023	02:59:54	8c8114b8-26d4-4be2-8084-bbf83cef0950	TypeError: Cannot read properties of undefined (reading 'toString')	PATCH	/api/blog/63e91e1f57ca2a376e3eec6b	http://localhost:5173
+21-02-2023	13:16:24	58a27d17-2cc5-472a-8eee-3f4b0af7dcc6	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1676965581405-8.185862411857536e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+21-02-2023	13:16:24	b9d6be16-7f1a-4e7f-8fee-55004f1db139	TypeError: Cannot read properties of undefined (reading 'toString')	PATCH	/api/blog/63e91e1f57ca2a376e3eec6b	http://localhost:5173
+21-02-2023	16:37:59	b8ee5c09-89be-4f01-bcc7-9a18afafed7f	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1676977677652-4.6805153003879415e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+21-02-2023	16:39:16	99738fb6-76b8-4473-8d6a-5e2916d2cb9d	Error: Error: [object Object]	POST	/api/image	http://localhost:5173
+21-02-2023	16:39:18	47a7d30a-e941-4375-844d-9d5a1e681a14	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1676977755202-2.7454038546363724e+23.jpeg'	POST	/api/image/blogs	http://localhost:5173
+21-02-2023	16:40:12	caacf89c-0182-4fe6-a1e5-2b91778504b2	Error: [object Object]	DELETE	/api/blog/63f4a65eebb990f05c59ab41	http://localhost:5173
+21-02-2023	16:41:49	bd066fd0-19db-4b68-82b7-6e2bfe612640	Error: [object Object]	DELETE	/api/blog/63f4a65eebb990f05c59ab41	http://localhost:5173
+21-02-2023	18:23:27	110445fc-ae46-4b7b-9a05-47b609096bd9	Error: Invalid sort() argument, must be array of arrays	GET	/api/category/all	http://localhost:5173

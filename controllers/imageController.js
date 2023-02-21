@@ -22,6 +22,8 @@ module.exports.deleteImages = asyncHandler(async (req, res) => {
 module.exports.uploadImages = asyncHandler(async (req, res) => {
   const url = req?.url?.split("/")[1];
 
+  console.log({ url });
+
   try {
     const file = req.file;
     const originalImage = file.path;
@@ -30,6 +32,13 @@ module.exports.uploadImages = asyncHandler(async (req, res) => {
       "\\public\\images\\compressed"
     );
     const newPath = await cloudinaryUploadImg(compressedImage, url);
+
+    console.log("image uploaded: ", newPath);
+
+    fs.closeSync(fs.openSync(originalImage, "r"));
+    fs.closeSync(fs.openSync(compressedImage, "r"));
+
+    // Delete the file
     fs.unlinkSync(originalImage);
     fs.unlinkSync(compressedImage);
 

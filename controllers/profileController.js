@@ -20,7 +20,6 @@ module.exports.getProfile = asyncHandler(async (req, res) => {
 
   if (email || username) {
     user = await User.findOne({ email }).exec();
-    console.log(user);
   } else {
     user = await User.findById(userId).exec();
   }

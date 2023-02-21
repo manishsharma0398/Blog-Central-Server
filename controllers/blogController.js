@@ -43,6 +43,7 @@ module.exports.getAllBlogs = asyncHandler(async (req, res) => {
   const limit = parseInt(req.query.limit) || 20;
   const search = req.query.search || "";
   let sort = req.query.sort || "views";
+  let sortOrder = req.query.sortOrder || "asc";
   let categoryToFilter = req.query.categories || "All";
 
   const categoriesFromDB = await Category.find({}).exec();
@@ -56,20 +57,6 @@ module.exports.getAllBlogs = asyncHandler(async (req, res) => {
     categoryIds = categories.filter((cat) =>
       mongoose.Types.ObjectId.isValid(cat)
     );
-  }
-
-  req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
-
-  console.log(req.query.sort);
-
-  let sortBy = {};
-
-  if (req.query.sort !== ",") {
-    if (sort[1]) {
-      sortBy[sort[0]] = sort[1];
-    } else {
-      sortBy[sort[0]] = "asc";
-    }
   }
 
   const query = {
@@ -87,7 +74,7 @@ module.exports.getAllBlogs = asyncHandler(async (req, res) => {
   }
 
   const allBlogs = await Blog.find(query)
-    .sort(sortBy)
+    .sort({ [sort]: sortOrder })
     .skip(page * limit)
     .limit(limit)
     .populate([{ path: "user", select: "name profilePic email" }])
@@ -107,15 +94,15 @@ module.exports.getAllBlogs = asyncHandler(async (req, res) => {
   );
 
   // sort the blogs by the number of likes count (either ascending or descending based on the `sort` query parameter)
-  // if (sort[0] === "likes") {
-  //   blogWithLikesCount.sort((a, b) => {
-  //     if (sort[1] === "asc") {
-  //       return a.likes - b.likes;
-  //     } else {
-  //       return b.likes - a.likes;
-  //     }
-  //   });
-  // }
+  if (sort === "likes") {
+    blogWithLikesCount.sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.likes - b.likes;
+      } else {
+        return b.likes - a.likes;
+      }
+    });
+  }
 
   const response = {
     totalDocuments: total,

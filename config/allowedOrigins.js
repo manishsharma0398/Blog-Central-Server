@@ -1,4 +1,5 @@
 const allowedOrigins = [
+  "http://localhost:5173",
   "https://blog-central-client.vercel.app",
   "https://blog-central-client.vercel.app/",
   "https://blog-central-client-4j003j7bn-manishsharma0398.vercel.app",

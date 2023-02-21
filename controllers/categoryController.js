@@ -22,7 +22,9 @@ module.exports.addNewCategory = asyncHandler(async (req, res) => {
 
 // read
 module.exports.getAllCategories = asyncHandler(async (req, res) => {
-  const allCategories = await Category.find({}).exec();
+  const allCategories = await Category.find({})
+    .sort({ category: "asc" })
+    .exec();
 
   return res.status(200).json({ categories: allCategories });
 });
