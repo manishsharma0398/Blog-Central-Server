@@ -31,6 +31,9 @@ module.exports.uploadImages = asyncHandler(async (req, res) => {
       "\\public\\images",
       "\\public\\images\\compressed"
     );
+
+    console.log({ originalImage, compressedImage });
+
     const newPath = await cloudinaryUploadImg(compressedImage, url);
 
     console.log("image uploaded: ", newPath);

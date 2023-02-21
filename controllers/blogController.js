@@ -246,7 +246,7 @@ module.exports.deleteBlog = asyncHandler(async (req, res) => {
     await cloudinaryDeleteImg(bl.public_id);
   });
   // delete placeholder image
-  await cloudinaryDeleteImg(blog.placeholderImg.public_id);
+  await cloudinaryDeleteImg(blog?.placeholderImg?.public_id);
 
   const isBlogDeleted = await Blog.deleteOne({
     _id: blogId,
