@@ -40,7 +40,7 @@ module.exports.uploadImages = asyncHandler(async (req, res) => {
     fs.unlinkSync(originalImage);
     fs.unlinkSync(compressedImage);
 
-    return res.status(201).json(img);
+    return res.status(201).json(newPath);
   } catch (error) {
     throw new Error(error);
   }
