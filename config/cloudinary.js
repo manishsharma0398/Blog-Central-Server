@@ -1,7 +1,6 @@
-const asyncHandler = require("express-async-handler");
-
 require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
+const asyncHandler = require("express-async-handler");
 
 // Configuration
 cloudinary.config({
@@ -29,9 +28,11 @@ module.exports.cloudinaryUploadImg = async (fileToUploads, folder_name) => {
 // Delete
 module.exports.cloudinaryDeleteImg = asyncHandler(async (public_id) => {
   try {
+    if (!public_id) return null;
     const response = await cloudinary.uploader.destroy(public_id);
     return response.result;
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
+    throw new Error(typeof error === "object" ? error.message : error);
   }
 });

@@ -237,7 +237,7 @@ module.exports.deleteBlog = asyncHandler(async (req, res) => {
 
   if (!blog) return res.status(404).json({ message: "Blog does not exist" });
 
-  // check if category belongs to user
+  // check if blog belongs to user
   if (userId !== blog.user.toString())
     return res.status(401).json({ message: "Only author can delete blog" });
 
@@ -245,8 +245,10 @@ module.exports.deleteBlog = asyncHandler(async (req, res) => {
   blog.images.forEach(async (bl) => {
     await cloudinaryDeleteImg(bl.public_id);
   });
+
   // delete placeholder image
-  await cloudinaryDeleteImg(blog?.placeholderImg?.public_id);
+  if (blog?.placeholderImg)
+    await cloudinaryDeleteImg(blog?.placeholderImg?.public_id);
 
   const isBlogDeleted = await Blog.deleteOne({
     _id: blogId,

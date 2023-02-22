@@ -31,7 +31,7 @@ module.exports.verifyToken = asyncHandler(async (req, res, next) => {
 module.exports.checkLoggedIn = asyncHandler(async (req, res, next) => {
   const authHeader = req?.headers?.authorization || req?.headers?.Authorization;
 
-  const token = authHeader.split(" ")[1];
+  const token = authHeader?.split(" ")[1] || "";
 
   jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
     if (err) {

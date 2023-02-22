@@ -7,13 +7,14 @@ const fsPromises = require("fs").promises;
 const imagesFolder = async () => {
   if (!fs.existsSync(path.join(__dirname, "..", "public"))) {
     try {
-      await fsPromises.mkdir(path.join(__dirname, "..", "public/images"), {
+      await fsPromises.mkdir(path.join(__dirname, "..", "public", "images"), {
         recursive: true,
       });
     } catch (error) {
       throw error;
     }
   }
+
   return path.join(__dirname, "..", "public", "images");
 };
 
@@ -43,11 +44,11 @@ module.exports.uploadPhoto = multer({
 
 const compressedFolder = async () => {
   if (
-    !fs.existsSync(path.join(__dirname, "..", "public", "images", "compressed"))
+    !fs.existsSync(path.join(__dirname, "..", "public", "compressedImages"))
   ) {
     try {
       await fsPromises.mkdir(
-        path.join(__dirname, "..", "public", "images", "compressed"),
+        path.join(__dirname, "..", "public", "compressedImages"),
         {
           recursive: true,
         }
@@ -56,17 +57,32 @@ const compressedFolder = async () => {
       throw error;
     }
   }
-  return path.join(__dirname, "..", "public", "images", "compressed");
+
+  return path.join(__dirname, "..", "public", "compressedImages");
 };
 
-module.exports.compressImage = async (req, res, next) => {
-  if (!req?.file) return next();
+module.exports.compressImage = async (file) => {
+  if (!file) return null;
   await compressedFolder();
-  await sharp(req?.file?.path)
+  await sharp(file?.path)
     // .resize(300, 300)
     .toFormat("jpeg")
     .jpeg({ quality: 50 })
-    .toFile(`public/images/compressed/${req?.file?.filename}`);
+    .toFile(
+      path.join(
+        __dirname,
+        "..",
+        "public",
+        "compressedImages",
+        `${file?.filename}`
+      )
+    );
 
-  next();
+  return path.join(
+    __dirname,
+    "..",
+    "public",
+    "compressedImages",
+    `${file?.filename}`
+  );
 };

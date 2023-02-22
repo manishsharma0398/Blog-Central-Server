@@ -1,6 +1,8 @@
 const fs = require("fs");
 const asyncHandler = require("express-async-handler");
 
+const { compressImage } = require("../middlewares/uploadImage");
+
 const {
   cloudinaryUploadImg,
   cloudinaryDeleteImg,
@@ -9,7 +11,7 @@ const {
 module.exports.deleteImages = asyncHandler(async (req, res) => {
   const { public_id } = req.body;
   try {
-    const response = await cloudinaryDeleteImg(public_id, "images");
+    const response = await cloudinaryDeleteImg(public_id);
 
     if (response === "ok") return res.status(204).json();
 
@@ -22,17 +24,10 @@ module.exports.deleteImages = asyncHandler(async (req, res) => {
 module.exports.uploadImages = asyncHandler(async (req, res) => {
   const url = req?.url?.split("/")[1];
 
-  console.log({ url });
-
   try {
     const file = req.file;
     const originalImage = file.path;
-    const compressedImage = originalImage.replace(
-      "\\public\\images",
-      "\\public\\images\\compressed"
-    );
-
-    console.log({ originalImage, compressedImage });
+    const compressedImage = await compressImage(file);
 
     const newPath = await cloudinaryUploadImg(compressedImage, url);
 
@@ -45,7 +40,7 @@ module.exports.uploadImages = asyncHandler(async (req, res) => {
     fs.unlinkSync(originalImage);
     fs.unlinkSync(compressedImage);
 
-    return res.status(201).json(newPath);
+    return res.status(201).json(img);
   } catch (error) {
     throw new Error(error);
   }

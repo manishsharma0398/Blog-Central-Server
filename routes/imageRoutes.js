@@ -1,29 +1,23 @@
 const router = require("express").Router();
 
-const { verifyToken } = require("../middlewares/verifyJWT");
 const {
   uploadImages,
   deleteImages,
 } = require("../controllers/imageController");
-const { uploadPhoto, compressImage } = require("../middlewares/uploadImage");
+const { uploadPhoto } = require("../middlewares/uploadImage");
+const { verifyToken } = require("../middlewares/verifyJWT");
+
+// delete images from cloudinary
+router.post("/", verifyToken, deleteImages);
 
 // upload blog image
-router.post(
-  "/blogs",
-  verifyToken,
-  uploadPhoto.single("images"),
-  compressImage,
-  uploadImages
-);
-
-router.post("/", verifyToken, deleteImages);
+router.post("/blogs", verifyToken, uploadPhoto.single("images"), uploadImages);
 
 // upload profile picture
 router.post(
   "/profile",
   verifyToken,
-  uploadPhoto.array("images", 1),
-  compressImage,
+  uploadPhoto.single("images"),
   uploadImages
 );
 

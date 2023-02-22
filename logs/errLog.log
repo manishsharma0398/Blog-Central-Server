@@ -402,3 +402,5 @@
 21-02-2023	16:40:12	caacf89c-0182-4fe6-a1e5-2b91778504b2	Error: [object Object]	DELETE	/api/blog/63f4a65eebb990f05c59ab41	http://localhost:5173
 21-02-2023	16:41:49	bd066fd0-19db-4b68-82b7-6e2bfe612640	Error: [object Object]	DELETE	/api/blog/63f4a65eebb990f05c59ab41	http://localhost:5173
 21-02-2023	18:23:27	110445fc-ae46-4b7b-9a05-47b609096bd9	Error: Invalid sort() argument, must be array of arrays	GET	/api/category/all	http://localhost:5173
+22-02-2023	13:55:32	4d61ae35-9216-4143-a5ed-e194f279b221	Error: [object Object]	DELETE	/api/blog/63f5c96bf06d96885b29e0b2	http://localhost:5173
+22-02-2023	13:57:40	28a166e4-225e-42a1-9b90-8e76a81a6d56	Error: [object Object]	DELETE	/api/blog/63f5ca4e335197373e07ecf4	http://localhost:5173
