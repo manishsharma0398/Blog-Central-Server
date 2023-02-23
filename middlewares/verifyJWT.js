@@ -4,7 +4,12 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 
 module.exports.verifyToken = asyncHandler(async (req, res, next) => {
-  const authHeader = req?.headers?.authorization || req?.headers?.Authorization;
+  console.log("I am getting called");
+
+  const authHeader =
+    req?.headers?.authorization || req?.headers?.Authorization || "";
+
+  console.log({ authHeader });
 
   if (!authHeader?.startsWith("Bearer ")) {
     res.statusCode = 401;

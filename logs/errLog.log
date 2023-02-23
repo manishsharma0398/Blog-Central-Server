@@ -404,3 +404,8 @@
 21-02-2023	18:23:27	110445fc-ae46-4b7b-9a05-47b609096bd9	Error: Invalid sort() argument, must be array of arrays	GET	/api/category/all	http://localhost:5173
 22-02-2023	13:55:32	4d61ae35-9216-4143-a5ed-e194f279b221	Error: [object Object]	DELETE	/api/blog/63f5c96bf06d96885b29e0b2	http://localhost:5173
 22-02-2023	13:57:40	28a166e4-225e-42a1-9b90-8e76a81a6d56	Error: [object Object]	DELETE	/api/blog/63f5ca4e335197373e07ecf4	http://localhost:5173
+22-02-2023	21:23:28	df2df483-42c2-469b-86cb-353d1a7f227e	TypeError: Cannot read properties of null (reading 'createVerificationToken')	POST	/api/user/register	http://localhost:5173
+22-02-2023	22:03:58	ba85794a-fea8-4980-8c49-586a9fc81b22	ValidationError: User validation failed: password: Path `password` is required., email: Path `email` is required., name: Path `name` is required.	POST	/api/user/register	http://localhost:5173
+23-02-2023	00:19:46	0679bc96-a4cf-44c9-9647-7355c2e70de7	Error: Error: EBUSY: resource busy or locked, unlink 'E:\projects\Blog Central\server\public\images\images-1677091773809-5.384338684338518e+22.jpeg'	POST	/api/image/blogs	http://localhost:5173
+23-02-2023	22:48:23	b129cbc6-2a45-4c83-9ac4-89a744365227	Error: Unauthorized	POST	/api/auth/refresh	http://localhost:5173
+23-02-2023	22:49:11	90264e9f-fdf4-4c4c-a43a-97e47974fac3	Error: Unauthorized	POST	/api/auth/refresh	http://localhost:5173

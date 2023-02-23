@@ -139,6 +139,8 @@ module.exports.generateNewVerificationToken = asyncHandler(async (req, res) => {
 module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
 
+  console.log({ cookies: cookies[COOKIE_NAME] });
+
   if (!cookies[COOKIE_NAME]) {
     res.statusCode = 401;
     throw new Error("Unauthorized");
@@ -154,6 +156,8 @@ module.exports.handleRefreshToken = asyncHandler(async (req, res) => {
         res.statusCode = 403;
         throw new Error("Forbidden");
       }
+
+      console.log({ decoded });
 
       const user = await User.findOne({ refreshToken })
         .select("-password")

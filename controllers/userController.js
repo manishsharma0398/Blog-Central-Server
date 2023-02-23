@@ -15,6 +15,7 @@ const {
 } = require("../utils/variables");
 const { isInputValid } = require("../validation/formValidation");
 const { register_validator } = require("../validation/authValidation");
+const { createVerificationToken } = require("../utils/verificationToken");
 const {
   cloudinaryUploadImg,
   cloudinaryDeleteImg,
@@ -25,7 +26,7 @@ const Category = require("../models/Category");
 module.exports.register = asyncHandler(async (req, res) => {
   // if (await isInputValid(req, res, register_validator)) return;
 
-  const { name, email } = req.body;
+  const { email } = req.body;
 
   const user = await User.findOne({ email }).exec();
 
@@ -34,16 +35,18 @@ module.exports.register = asyncHandler(async (req, res) => {
 
   const { confirmPassword, ...userdata } = req.body;
 
-  await User.create(userdata);
+  const { token, verificationToken, verificationTokenExpires } =
+    await createVerificationToken();
 
-  // ?Generate verify account token
-  const verifyToken = await user.createVerificationToken();
+  const newUser = await User.create({
+    ...userdata,
+    verificationToken,
+    verificationTokenExpires,
+  });
 
-  console.log(verifyToken);
-
-  const htm = `Congratulations! ${name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:
+  const htm = `Congratulations! ${newUser?.name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:
   <br/>
-  <a href="${process.env.FRONT_END_BASE_URL}/verify-account/${verifyToken}">Verify Account</a>
+  <a href="${process.env.FRONT_END_BASE_URL}/verify-account/${token}">Verify Account</a>
   `;
 
   const data = {
@@ -179,7 +182,26 @@ module.exports.deleteUser = asyncHandler(async (req, res) => {
       return res.status(403).json({ message: "Unauthorized" });
 
     await Like.deleteMany({ user: userId }).exec();
-    await Blog.deleteMany({ user: userId }).exec();
+
+    const blogs = await Blog.find({ user: userId }).exec();
+
+    for (let i = 0; i < blogs.length; i++) {
+      const blog = blogs[i];
+
+      await Like.deleteMany({ blog: blog._id }).exec();
+
+      // delete images
+      blog.images.forEach(async (bl) => {
+        await cloudinaryDeleteImg(bl.public_id);
+      });
+
+      // delete placeholder image
+      if (blog?.placeholderImg)
+        await cloudinaryDeleteImg(blog?.placeholderImg?.public_id);
+
+      await Blog.deleteOne(blog?._id).exec();
+    }
+
     await Profile.findOneAndRemove({ user: userId }).exec();
 
     await user.delete();

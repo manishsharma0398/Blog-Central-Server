@@ -16,7 +16,12 @@ const { verifyToken } = require("../middlewares/verifyJWT");
 router.post("/login", login);
 router.post("/logout", verifyToken, logout);
 router.post("/refresh", verifyToken, handleRefreshToken);
-router.post("/refresh", verifyToken, generateNewVerificationToken);
+// router.post("/refresh", handleRefreshToken);
+router.post(
+  "/generateVerificationToken",
+  verifyToken,
+  generateNewVerificationToken
+);
 router.put("/verify-account/:verifyToken", verifyToken, verifyAccount);
 router.put("/password-update", verifyToken, updatePassword);
 router.post("/password-forgot", forgotPassword);
