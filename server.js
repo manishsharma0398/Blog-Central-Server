@@ -30,7 +30,7 @@ app.use(cors(corsOptions));
 app.use(morgan("dev"));
 
 // routes
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   return res
     .status(200)
     .json({ message: "Welcome TO Blog CEntral Rest API index page." });

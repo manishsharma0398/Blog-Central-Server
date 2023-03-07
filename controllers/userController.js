@@ -24,36 +24,39 @@ const Category = require("../models/Category");
 
 // register
 module.exports.register = asyncHandler(async (req, res) => {
-  // if (await isInputValid(req, res, register_validator)) return;
+  const { email, password, confirmPassword } = req.body;
 
-  const { email } = req.body;
+  if (password !== confirmPassword)
+    return res.status(400).json({ message: "Passwords do not match" });
 
   const user = await User.findOne({ email }).exec();
 
   if (user)
     return res.status(400).json({ message: "Email already registered" });
 
-  const { confirmPassword, ...userdata } = req.body;
+  // const { token, verificationToken, verificationTokenExpires } =
+  //   await createVerificationToken();
 
-  const { token, verificationToken, verificationTokenExpires } =
-    await createVerificationToken();
+  // const newUser = await User.create({
+  //   ...userdata,
+  //   verificationToken,
+  //   verificationTokenExpires,
+  // });
 
-  const newUser = await User.create({
-    ...userdata,
-    verificationToken,
-    verificationTokenExpires,
-  });
+  const newUser = await User.create(req.body);
 
-  const htm = `Congratulations! ${newUser?.name}, your Blog Central account has been successfully created. <br/> Please click on the following link to complete your verification process:
-  <br/>
-  <a href="${process.env.FRONT_END_BASE_URL}/verify-account/${token}">Verify Account</a>
+  const htm = `Congratulations! ${newUser?.name}, your Blog Central account has been successfully created.
   `;
+
+  // const verificationMsgEmail = `<br/> Please click on the following link to complete your verification process:
+  // <br/>
+  // <a href="${process.env.FRONT_END_BASE_URL}/verify-account/${token}">Verify Account</a>`;
 
   const data = {
     to: email,
     subject: "New Blog Central Account Created",
     htm,
-    text: "Please complete verification process",
+    text: "Welcome to Blog Central",
   };
 
   await sendEmail(data);
