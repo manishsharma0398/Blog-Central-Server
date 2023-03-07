@@ -3,12 +3,12 @@ const router = express.Router();
 
 const {
   login,
-  handleRefreshToken,
   logout,
-  updatePassword,
-  forgotPassword,
   resetPassword,
   verifyAccount,
+  updatePassword,
+  forgotPassword,
+  handleRefreshToken,
   generateNewVerificationToken,
 } = require("../controllers/authController");
 const { verifyToken } = require("../middlewares/verifyJWT");

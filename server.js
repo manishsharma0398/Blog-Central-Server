@@ -30,6 +30,11 @@ app.use(cors(corsOptions));
 app.use(morgan("dev"));
 
 // routes
+app.use("/", (req, res) => {
+  return res
+    .status(200)
+    .json({ message: "Welcome TO Blog CEntral Rest API index page." });
+});
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/blog", blogRoutes);
